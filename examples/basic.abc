@@ -1,0 +1,14 @@
+X:1
+T:ABC+ Basic Example
+C:Demo Composer
+M:4/4
+L:1/8
+Q:1/4=120
+K:C
+
+% Simple melody with dynamics and articulations
+!p! C2DE "C"F2GA | !<(! BAGF !<)! !f! E2C2 |
+!staccato! c2BA G2FE | D2EF "G"G4 |
+
+% Lyrics
+w: This is a sim-ple song, de-mon-stra-ting A-B-C plus!

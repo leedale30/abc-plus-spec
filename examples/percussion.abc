@@ -1,0 +1,18 @@
+X:1
+T:ABC+ Percussion Example
+M:4/4
+L:1/8
+K:C clef=perc
+
+% Percussion mapping
+I:percmap ^c' E5 42 x
+I:percmap _B, D4 36 normal  
+I:percmap ^d' F5 38 normal
+I:percmap ^f' A5 46 x
+
+% Basic rock beat
+"Drums"^c'2^c'^c' ^c'2^c'^c' | ^d'2^c'^d' ^c'2^c'^c' |
+w: HH HH HH HH HH HH HH HH | SD HH SD HH HH HH HH |
+
+% With bass drum
+[_B,^c']2 ^c'2 [_B,^d']2 ^c'2 | [_B,^c']2 ^c'2 [_B,^d']2 ^c'2 |

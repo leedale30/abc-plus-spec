@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/leedale30/abc-plus-spec/schema/directives.json",
+    "title": "ABC+ Directives Schema",
+    "description": "JSON Schema for ABC+ custom directives validation",
+    "version": "1.0.0",
+    "definitions": {
+        "directive": {
+            "type": "object",
+            "properties": {
+                "scope": {
+                    "type": "string",
+                    "enum": [
+                        "direction",
+                        "measure",
+                        "note",
+                        "global"
+                    ],
+                    "description": "Scope of the directive"
+                },
+                "placement": {
+                    "type": "string",
+                    "enum": [
+                        "before_measure",
+                        "after_barline",
+                        "after_note",
+                        "header"
+                    ],
+                    "description": "Where the directive should be placed"
+                },
+                "attributes": {
+                    "type": "object",
+                    "description": "Key-value pairs of directive attributes",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "string",
+                            "float",
+                            "integer",
+                            "boolean"
+                        ]
+                    }
+                },
+                "musicXML": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "element": {
+                                    "type": "string",
+                                    "description": "Target MusicXML element"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "description": "MusicXML sub-type"
+                                }
+                            },
+                            "required": [
+                                "element"
+                            ]
+                        },
+                        {
+                            "type": "null",
+                            "description": "No MusicXML mapping (stripped during conversion)"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "scope",
+                "placement",
+                "attributes"
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "abcPlusVersion": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
+            "description": "ABC+ specification version"
+        },
+        "directives": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/directive"
+            },
+            "description": "Map of directive names to their definitions"
+        }
+    },
+    "required": [
+        "abcPlusVersion",
+        "directives"
+    ]
+}

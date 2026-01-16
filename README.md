@@ -1,0 +1,53 @@
+# ABC+ Notation Specification
+
+**ABC+** is an extended version of [ABC notation](https://abcnotation.com/) with additional directives for modern music applications, game audio, and enhanced MusicXML export.
+
+## Quick Start
+
+```abc
+X:1
+T:Example Song
+M:4/4
+L:1/8
+K:C
+%%dir mood="energetic"
+"C"C2DE F2GA | "G"B2AG "C"c4 |
+w: Hel-lo world, this is ABC+!
+```
+
+## Features
+
+- ✅ Full ABC notation compatibility
+- ✅ Custom directives (`%%dir`, `%%fx`, `%%loop`)
+- ✅ Enhanced articulation and dynamics
+- ✅ Game audio integration (`%%game_state`)
+- ✅ MusicXML export support
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [SPECIFICATION.md](SPECIFICATION.md) | Complete syntax reference |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [examples/](examples/) | Sample ABC+ files |
+| [schema/](schema/) | JSON schema for validation |
+
+## Installation
+
+ABC+ is a notation format, not a library. To use it:
+
+1. **Write ABC+ files** using any text editor
+2. **Convert to MusicXML** using [ABC+ Converter](https://github.com/leedale30/abc-to-xml-converter)
+3. **Import into** notation software (MuseScore, Sibelius, Finale)
+
+## Version
+
+Current specification version: **1.0.0**
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+## Related Projects
+
+- [abc-to-xml-converter](https://github.com/leedale30/abc-to-xml-converter) - ABC+ to MusicXML converter app
