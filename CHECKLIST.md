@@ -1,331 +1,558 @@
-# ABC+ to MusicXML Feature Checklist
+# Complete MusicXML 4.0 Element Checklist
+
+**Source:** [W3C MusicXML 4.0 Element Tree](https://www.w3.org/2021/06/musicxml40/musicxml-reference/element-tree/)
 
 **Legend:**
 
 - ✅ = Done & Working
-- ⚠️ = Done & Not Working / Needs Fix
-- ❌ = Not Done (To Implement)
-- 🚫 = Can't Do (ABC limitation / Not applicable)
+- ⚠️ = Done, Needs Fix
+- ❌ = Not Done
+- 🚫 = Can't Do (no ABC equivalent / not applicable)
 
 ---
 
-## 1. Core Notation
+## Score Structure
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Notes | `<note><pitch>` | `C D E F` | ✅ |
-| Rests | `<rest>` | `z`, `x` | ✅ |
-| Measure rests | `<rest measure="yes">` | `Z` | ✅ |
-| Chords | `<chord>` | `[CEG]` | ✅ |
-| Dotted notes | `<dot>` | `C3/2` | ✅ |
-| Double-dotted | `<dot><dot>` | `C7/4` | ✅ |
-| Accidentals | `<accidental>` | `^C`, `_C`, `=C` | ✅ |
-| Octaves | `<octave>` | `C,`, `c'` | ✅ |
-| Duration | `<duration>`, `<type>` | `C2`, `C/2` | ✅ |
-| Stem direction | `<stem>` | Automatic | ✅ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<score-partwise>` | ✅ | Root element |
+| `<score-timewise>` | 🚫 | Not used |
+| `<part>` | ✅ | `V:` voice |
+| `<measure>` | ✅ | `|` barline |
+| `<work>` | ✅ | Header fields |
+| `<movement-number>` | ❌ | — |
+| `<movement-title>` | ✅ | `T:` title |
 
----
+## Identification
 
-## 2. Key & Time Signatures
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<identification>` | ✅ | Container |
+| `<creator>` | ✅ | `C:` composer |
+| `<rights>` | ❌ | — |
+| `<encoding>` | ✅ | Auto-generated |
+| `<encoder>` | ✅ | Auto |
+| `<encoding-date>` | ✅ | Auto |
+| `<encoding-description>` | ❌ | — |
+| `<software>` | ✅ | "abc2xml" |
+| `<supports>` | ✅ | Auto |
+| `<source>` | ✅ | `S:` field |
+| `<relation>` | ❌ | — |
+| `<miscellaneous>` | ❌ | — |
+| `<miscellaneous-field>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Major keys | `<key><fifths>` | `K:C`, `K:G` | ✅ |
-| Minor keys | `<key><mode>minor` | `K:Am`, `K:Em` | ✅ |
-| Modal keys | `<key><mode>` | `K:Dmix`, `K:Ador` | ✅ |
-| Time signature | `<time>` | `M:4/4`, `M:6/8` | ✅ |
-| Compound time | `<time>` | `M:12/8` | ✅ |
-| Cut time | `<time symbol="cut">` | `M:C|` | ✅ |
-| Common time | `<time symbol="common">` | `M:C` | ✅ |
-| Senza misura | `<senza-misura>` | — | ❌ |
-| Key cancel | `<cancel>` | — | ❌ |
+## Defaults & Layout
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<defaults>` | ❌ | — |
+| `<scaling>` | ❌ | — |
+| `<millimeters>` | ❌ | — |
+| `<tenths>` | ❌ | — |
+| `<page-layout>` | ❌ | `%%pagewidth` |
+| `<page-height>` | ❌ | `%%pageheight` |
+| `<page-width>` | ❌ | `%%pagewidth` |
+| `<page-margins>` | ❌ | — |
+| `<left-margin>` | ❌ | `%%leftmargin` |
+| `<right-margin>` | ❌ | `%%rightmargin` |
+| `<top-margin>` | ❌ | `%%topmargin` |
+| `<bottom-margin>` | ❌ | `%%botmargin` |
+| `<system-layout>` | ❌ | — |
+| `<system-margins>` | ❌ | — |
+| `<system-distance>` | ❌ | `%%sysstaffsep` |
+| `<top-system-distance>` | ❌ | — |
+| `<system-dividers>` | ❌ | — |
+| `<left-divider>` | ❌ | — |
+| `<right-divider>` | ❌ | — |
+| `<staff-layout>` | ❌ | — |
+| `<staff-distance>` | ❌ | `%%staffsep` |
+| `<appearance>` | ❌ | — |
+| `<line-width>` | ❌ | — |
+| `<note-size>` | ❌ | — |
+| `<distance>` | ❌ | — |
+| `<glyph>` | 🚫 | SMuFL glyphs |
+| `<other-appearance>` | ❌ | — |
+| `<music-font>` | ❌ | — |
+| `<word-font>` | ❌ | — |
+| `<lyric-font>` | ❌ | — |
+| `<lyric-language>` | ❌ | — |
+| `<concert-score>` | 🚫 | — |
 
-## 3. Clefs
+## Credit
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Treble | `<clef><sign>G` | `K:clef=treble` | ✅ |
-| Bass | `<clef><sign>F` | `K:clef=bass` | ✅ |
-| Alto | `<clef><sign>C<line>3` | `K:clef=alto` | ✅ |
-| Tenor | `<clef><sign>C<line>4` | `K:clef=tenor` | ✅ |
-| Percussion | `<clef><sign>percussion` | `K:clef=perc` | ✅ |
-| TAB | `<clef><sign>TAB` | `K:clef=tab` | ✅ |
-| Octave clefs | `<clef-octave-change>` | `K:clef=treble-8` | ⚠️ |
-| No clef | `<sign></sign>` | `K:clef=none` | ✅ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<credit>` | ❌ | — |
+| `<credit-type>` | ❌ | — |
+| `<credit-image>` | 🚫 | — |
+| `<credit-symbol>` | ❌ | — |
+| `<credit-words>` | ❌ | — |
+| `<link>` | 🚫 | — |
+| `<bookmark>` | 🚫 | — |
 
----
+## Part List
 
-## 4. Barlines & Repeats
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<part-list>` | ✅ | Container |
+| `<part-group>` | ✅ | `%%score` |
+| `<group-name>` | ✅ | Voice name |
+| `<group-name-display>` | ❌ | — |
+| `<group-abbreviation>` | ❌ | — |
+| `<group-abbreviation-display>` | ❌ | — |
+| `<group-symbol>` | ✅ | `{` `}` `[` `]` |
+| `<group-barline>` | ❌ | — |
+| `<group-time>` | ❌ | — |
+| `<score-part>` | ✅ | Voice definition |
+| `<part-name>` | ✅ | Voice name |
+| `<part-name-display>` | ❌ | — |
+| `<part-abbreviation>` | ❌ | — |
+| `<part-abbreviation-display>` | ❌ | — |
+| `<group>` | ❌ | — |
+| `<score-instrument>` | ✅ | `I:MIDI` |
+| `<instrument-name>` | ✅ | MIDI program |
+| `<instrument-abbreviation>` | ❌ | — |
+| `<instrument-sound>` | ❌ | — |
+| `<solo>` | ❌ | — |
+| `<ensemble>` | ❌ | — |
+| `<virtual-instrument>` | ❌ | — |
+| `<virtual-library>` | ❌ | — |
+| `<virtual-name>` | ❌ | — |
+| `<player>` | ❌ | — |
+| `<player-name>` | ❌ | — |
+| `<midi-device>` | ✅ | `I:MIDI` |
+| `<midi-instrument>` | ✅ | `I:MIDI` |
+| `<midi-channel>` | ✅ | Channel |
+| `<midi-name>` | ❌ | — |
+| `<midi-bank>` | ❌ | — |
+| `<midi-program>` | ✅ | Program |
+| `<midi-unpitched>` | ✅ | `I:percmap` |
+| `<volume>` | ✅ | Volume |
+| `<pan>` | ✅ | Pan |
+| `<elevation>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Regular | `<barline>` | `|` | ✅ |
-| Double | `<bar-style>light-light` | `||` | ✅ |
-| Final | `<bar-style>light-heavy` | `|]` | ✅ |
-| Repeat start | `<repeat direction="forward">` | `|:` | ✅ |
-| Repeat end | `<repeat direction="backward">` | `:|` | ✅ |
-| 1st ending | `<ending number="1">` | `[1` | ✅ |
-| 2nd ending | `<ending number="2">` | `[2` | ✅ |
-| 3rd+ endings | `<ending number="3">` | `[3` | ⚠️ |
-| Dashed barline | `<bar-style>dashed` | `.|` | ✅ |
-| Invisible barline | `<bar-style>none` | `[|]` | ✅ |
+## Attributes
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<attributes>` | ✅ | Container |
+| `<divisions>` | ✅ | Auto-calculated |
+| `<key>` | ✅ | `K:` |
+| `<fifths>` | ✅ | Key signature |
+| `<mode>` | ✅ | `maj`, `min`, `mix`, etc. |
+| `<cancel>` | ❌ | — |
+| `<key-step>` | ❌ | Non-traditional keys |
+| `<key-alter>` | ❌ | Non-traditional keys |
+| `<key-accidental>` | ❌ | — |
+| `<key-octave>` | ❌ | — |
+| `<time>` | ✅ | `M:` |
+| `<beats>` | ✅ | Numerator |
+| `<beat-type>` | ✅ | Denominator |
+| `<interchangeable>` | ❌ | — |
+| `<time-relation>` | ❌ | — |
+| `<senza-misura>` | ❌ | Free time |
+| `<staves>` | ✅ | Grand staff |
+| `<part-symbol>` | ❌ | — |
+| `<instruments>` | ❌ | — |
+| `<clef>` | ✅ | `clef=` |
+| `<sign>` | ✅ | G, F, C, percussion, TAB |
+| `<line>` | ✅ | Clef line |
+| `<clef-octave-change>` | ⚠️ | `clef=treble-8` |
+| `<staff-details>` | ❌ | — |
+| `<staff-type>` | ❌ | — |
+| `<staff-lines>` | ❌ | — |
+| `<staff-tuning>` | ✅ | `I:tuning` |
+| `<tuning-step>` | ✅ | — |
+| `<tuning-alter>` | ✅ | — |
+| `<tuning-octave>` | ✅ | — |
+| `<capo>` | ✅ | `I:capo` |
+| `<staff-size>` | ❌ | — |
+| `<line-detail>` | ❌ | — |
+| `<transpose>` | ✅ | — |
+| `<chromatic>` | ✅ | — |
+| `<diatonic>` | ✅ | — |
+| `<octave-change>` | ✅ | — |
+| `<double>` | ❌ | — |
+| `<for-part>` | ❌ | — |
+| `<part-clef>` | ❌ | — |
+| `<part-transpose>` | ❌ | — |
+| `<directive>` | ❌ | — |
+| `<measure-style>` | ❌ | — |
+| `<multiple-rest>` | ✅ | `Z` |
+| `<measure-repeat>` | ❌ | — |
+| `<beat-repeat>` | ❌ | — |
+| `<slash>` | ❌ | — |
+| `<slash-type>` | ❌ | — |
+| `<slash-dot>` | ❌ | — |
+| `<except-voice>` | ❌ | — |
 
-## 5. Articulations
+## Note
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Staccato | `<staccato>` | `.C` or `!staccato!` | ✅ |
-| Staccatissimo | `<staccatissimo>` | `!staccatissimo!` | ❌ |
-| Accent | `<accent>` | `!accent!` | ✅ |
-| Strong accent | `<strong-accent>` | `!marcato!` | ✅ |
-| Tenuto | `<tenuto>` | `!tenuto!` | ✅ |
-| Detached legato | `<detached-legato>` | `!detached-legato!` | ❌ |
-| Spiccato | `<spiccato>` | `!spiccato!` | ❌ |
-| Scoop | `<scoop>` | `!scoop!` | ❌ |
-| Plop | `<plop>` | `!plop!` | ❌ |
-| Doit | `<doit>` | `!doit!` | ❌ |
-| Falloff | `<falloff>` | `!falloff!` | ❌ |
-| Caesura | `<caesura>` | `!caesura!` | ❌ |
-| Breath mark | `<breath-mark>` | `!breath!` | ✅ |
-| Stress | `<stress>` | `!stress!` | ❌ |
-| Unstress | `<unstress>` | `!unstress!` | ❌ |
-| Soft accent | `<soft-accent>` | `!soft-accent!` | ❌ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<note>` | ✅ | `C D E F G A B` |
+| `<grace>` | ✅ | `{notes}` |
+| `<chord>` | ✅ | `[CEG]` |
+| `<pitch>` | ✅ | Note letter |
+| `<step>` | ✅ | C-B |
+| `<alter>` | ✅ | `^` `_` `=` |
+| `<octave>` | ✅ | `,` `'` |
+| `<unpitched>` | ✅ | `I:percmap` |
+| `<display-step>` | ✅ | Percussion |
+| `<display-octave>` | ✅ | Percussion |
+| `<rest>` | ✅ | `z` `x` `Z` |
+| `<duration>` | ✅ | Note length |
+| `<tie>` | ✅ | `-` |
+| `<cue>` | ✅ | `!cue!` |
+| `<instrument>` | ✅ | — |
+| `<footnote>` | ❌ | — |
+| `<level>` | ❌ | — |
+| `<voice>` | ✅ | `V:` |
+| `<type>` | ✅ | Note type |
+| `<dot>` | ✅ | Dotted notes |
+| `<accidental>` | ✅ | `^` `_` `=` |
+| `<time-modification>` | ✅ | Tuplets `(3` |
+| `<actual-notes>` | ✅ | — |
+| `<normal-notes>` | ✅ | — |
+| `<normal-type>` | ✅ | — |
+| `<normal-dot>` | ❌ | — |
+| `<stem>` | ✅ | Auto |
+| `<notehead>` | ✅ | `I:percmap` |
+| `<notehead-text>` | ❌ | — |
+| `<staff>` | ✅ | Grand staff |
+| `<beam>` | ✅ | Auto |
+| `<notations>` | ✅ | Container |
+| `<lyric>` | ✅ | `w:` |
+| `<syllabic>` | ✅ | `-` |
+| `<text>` | ✅ | Lyric text |
+| `<elision>` | ✅ | `~` |
+| `<extend>` | ✅ | `_` melisma |
+| `<laughing>` | 🚫 | — |
+| `<humming>` | 🚫 | — |
+| `<end-line>` | ❌ | — |
+| `<end-paragraph>` | ❌ | — |
+| `<play>` | ❌ | — |
+| `<ipa>` | 🚫 | — |
+| `<mute>` | ❌ | — |
+| `<semi-pitched>` | ❌ | — |
+| `<other-play>` | ❌ | — |
+| `<listen>` | 🚫 | — |
+| `<assess>` | 🚫 | — |
+| `<wait>` | 🚫 | — |
+| `<other-listen>` | 🚫 | — |
 
----
+## Notations
 
-## 6. Ornaments
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<notations>` | ✅ | Container |
+| `<tied>` | ✅ | `-` tie |
+| `<slur>` | ✅ | `()` |
+| `<tuplet>` | ✅ | `(3` etc. |
+| `<tuplet-actual>` | ✅ | — |
+| `<tuplet-normal>` | ✅ | — |
+| `<tuplet-number>` | ✅ | — |
+| `<tuplet-type>` | ✅ | — |
+| `<tuplet-dot>` | ❌ | — |
+| `<glissando>` | ✅ | `!slide!` |
+| `<slide>` | ✅ | `!slide!` |
+| `<arpeggiate>` | ✅ | `!arpeggio!` |
+| `<non-arpeggiate>` | ❌ | — |
+| `<accidental-mark>` | ❌ | — |
+| `<fermata>` | ✅ | `H` or `!fermata!` |
+| `<other-notation>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Trill | `<trill-mark>` | `!trill!` or `T` | ✅ |
-| Trill line | `<wavy-line>` | `!trill(!`, `!trill)!` | ✅ |
-| Mordent | `<mordent>` | `!mordent!` or `M` | ✅ |
-| Inverted mordent | `<inverted-mordent>` | `!uppermordent!` or `P` | ✅ |
-| Turn | `<turn>` | `!turn!` | ✅ |
-| Inverted turn | `<inverted-turn>` | `!invertedturn!` | ⚠️ |
-| Delayed turn | `<delayed-turn>` | `!delayed-turn!` | ❌ |
-| Delayed inv. turn | `<delayed-inverted-turn>` | — | ❌ |
-| Shake | `<shake>` | `!shake!` | ❌ |
-| Schleifer | `<schleifer>` | `!schleifer!` | ❌ |
-| Tremolo | `<tremolo>` | `!///!` | ✅ |
-| Haydn ornament | `<haydn>` | `!haydn!` | ❌ |
-| Accidental mark | `<accidental-mark>` | — | ❌ |
+## Ornaments
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<ornaments>` | ✅ | Container |
+| `<trill-mark>` | ✅ | `T` or `!trill!` |
+| `<turn>` | ✅ | `!turn!` |
+| `<delayed-turn>` | ❌ | `!delayed-turn!` |
+| `<inverted-turn>` | ⚠️ | `!invertedturn!` |
+| `<delayed-inverted-turn>` | ❌ | — |
+| `<vertical-turn>` | ❌ | — |
+| `<inverted-vertical-turn>` | ❌ | — |
+| `<shake>` | ❌ | `!shake!` |
+| `<wavy-line>` | ✅ | `!trill(!` `!trill)!` |
+| `<mordent>` | ✅ | `M` or `!mordent!` |
+| `<inverted-mordent>` | ✅ | `P` or `!uppermordent!` |
+| `<schleifer>` | ❌ | `!schleifer!` |
+| `<tremolo>` | ✅ | `!///!` |
+| `<haydn>` | ❌ | `!haydn!` |
+| `<other-ornament>` | ❌ | — |
 
-## 7. Dynamics
+## Articulations
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| ppp | `<ppp>` | `!ppp!` | ✅ |
-| pp | `<pp>` | `!pp!` | ✅ |
-| p | `<p>` | `!p!` | ✅ |
-| mp | `<mp>` | `!mp!` | ✅ |
-| mf | `<mf>` | `!mf!` | ✅ |
-| f | `<f>` | `!f!` | ✅ |
-| ff | `<ff>` | `!ff!` | ✅ |
-| fff | `<fff>` | `!fff!` | ✅ |
-| sfz | `<sfz>` | `!sfz!` | ✅ |
-| sfp | `<sfp>` | `!sfp!` | ❌ |
-| sfpp | `<sfpp>` | `!sfpp!` | ❌ |
-| sffz | `<sffz>` | `!sffz!` | ❌ |
-| fp | `<fp>` | `!fp!` | ❌ |
-| fz | `<fz>` | `!fz!` | ❌ |
-| rf, rfz | `<rf>`, `<rfz>` | `!rf!`, `!rfz!` | ❌ |
-| n (niente) | `<n>` | `!n!` | ❌ |
-| pf | `<pf>` | `!pf!` | ❌ |
-| Crescendo hairpin | `<wedge type="crescendo">` | `!<(!`, `!<)!` | ✅ |
-| Diminuendo hairpin | `<wedge type="diminuendo">` | `!>(!`, `!>)!` | ✅ |
-| Dashes | `<dashes>` | — | ❌ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<articulations>` | ✅ | Container |
+| `<accent>` | ✅ | `!accent!` |
+| `<strong-accent>` | ✅ | `!marcato!` |
+| `<staccato>` | ✅ | `.` or `!staccato!` |
+| `<staccatissimo>` | ❌ | `!staccatissimo!` |
+| `<spiccato>` | ❌ | `!spiccato!` |
+| `<tenuto>` | ✅ | `!tenuto!` |
+| `<detached-legato>` | ❌ | `!detached-legato!` |
+| `<scoop>` | ❌ | `!scoop!` |
+| `<plop>` | ❌ | `!plop!` |
+| `<doit>` | ❌ | `!doit!` |
+| `<falloff>` | ❌ | `!falloff!` |
+| `<breath-mark>` | ✅ | `!breath!` |
+| `<caesura>` | ❌ | `!caesura!` |
+| `<stress>` | ❌ | `!stress!` |
+| `<unstress>` | ❌ | `!unstress!` |
+| `<soft-accent>` | ❌ | `!soft-accent!` |
+| `<other-articulation>` | ✅ | — |
 
----
+## Technical
 
-## 8. Slurs & Ties
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<technical>` | ✅ | Container |
+| `<up-bow>` | ✅ | `u` or `!upbow!` |
+| `<down-bow>` | ✅ | `v` or `!downbow!` |
+| `<harmonic>` | ⚠️ | `!harmonic!` |
+| `<natural>` | ⚠️ | — |
+| `<artificial>` | ❌ | — |
+| `<base-pitch>` | ❌ | — |
+| `<touching-pitch>` | ❌ | — |
+| `<sounding-pitch>` | ❌ | — |
+| `<open-string>` | ✅ | `!open!` |
+| `<thumb-position>` | ❌ | `!thumb!` |
+| `<fingering>` | ✅ | `!1!` - `!5!` |
+| `<pluck>` | ❌ | — |
+| `<double-tongue>` | ❌ | `!double-tongue!` |
+| `<triple-tongue>` | ❌ | `!triple-tongue!` |
+| `<stopped>` | ✅ | `!mute!` |
+| `<snap-pizzicato>` | ✅ | `!snap!` |
+| `<fret>` | ✅ | TAB auto |
+| `<string>` | ✅ | `!1!` - `!6!` |
+| `<hammer-on>` | ❌ | `!hammer-on!` |
+| `<pull-off>` | ❌ | `!pull-off!` |
+| `<bend>` | ❌ | `!bend!` |
+| `<bend-alter>` | ❌ | — |
+| `<pre-bend>` | ❌ | — |
+| `<release>` | ❌ | — |
+| `<with-bar>` | ❌ | — |
+| `<tap>` | ❌ | `!tap!` |
+| `<heel>` | ❌ | `!heel!` |
+| `<toe>` | ❌ | `!toe!` |
+| `<fingernails>` | ❌ | `!fingernails!` |
+| `<hole>` | ❌ | Woodwind |
+| `<hole-type>` | ❌ | — |
+| `<hole-closed>` | ❌ | — |
+| `<hole-shape>` | ❌ | — |
+| `<arrow>` | 🚫 | Analysis |
+| `<arrow-direction>` | 🚫 | — |
+| `<arrow-style>` | 🚫 | — |
+| `<arrowhead>` | 🚫 | — |
+| `<circular-arrow>` | 🚫 | — |
+| `<handbell>` | ❌ | `!handbell!` |
+| `<brass-bend>` | ❌ | — |
+| `<flip>` | ❌ | — |
+| `<smear>` | ❌ | — |
+| `<open>` | ❌ | — |
+| `<half-muted>` | ❌ | `!half-muted!` |
+| `<harmon-mute>` | ❌ | — |
+| `<harmon-closed>` | ❌ | — |
+| `<golpe>` | ❌ | `!golpe!` |
+| `<other-technical>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Slur | `<slur>` | `(CDE)` | ✅ |
-| Dotted slur | `<slur line-type="dotted">` | `.(CDE)` | ✅ |
-| Tie | `<tie>`, `<tied>` | `C-C` | ✅ |
-| Let ring | — | — | 🚫 |
-| Nested slurs | `<slur number="2">` | `((CDE)(FGA))` | ✅ |
+## Dynamics
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<dynamics>` | ✅ | Container |
+| `<p>` | ✅ | `!p!` |
+| `<pp>` | ✅ | `!pp!` |
+| `<ppp>` | ✅ | `!ppp!` |
+| `<pppp>` | ❌ | `!pppp!` |
+| `<ppppp>` | ❌ | `!ppppp!` |
+| `<pppppp>` | ❌ | `!pppppp!` |
+| `<f>` | ✅ | `!f!` |
+| `<ff>` | ✅ | `!ff!` |
+| `<fff>` | ✅ | `!fff!` |
+| `<ffff>` | ❌ | `!ffff!` |
+| `<fffff>` | ❌ | `!fffff!` |
+| `<ffffff>` | ❌ | `!ffffff!` |
+| `<mp>` | ✅ | `!mp!` |
+| `<mf>` | ✅ | `!mf!` |
+| `<sf>` | ❌ | `!sf!` |
+| `<sfp>` | ❌ | `!sfp!` |
+| `<sfpp>` | ❌ | `!sfpp!` |
+| `<fp>` | ❌ | `!fp!` |
+| `<rf>` | ❌ | `!rf!` |
+| `<rfz>` | ❌ | `!rfz!` |
+| `<sfz>` | ✅ | `!sfz!` |
+| `<sffz>` | ❌ | `!sffz!` |
+| `<fz>` | ❌ | `!fz!` |
+| `<n>` | ❌ | `!n!` (niente) |
+| `<pf>` | ❌ | `!pf!` |
+| `<sfzp>` | ❌ | `!sfzp!` |
+| `<other-dynamics>` | ❌ | — |
 
-## 9. Beaming & Tuplets
+## Direction
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Beam groups | `<beam>` | Automatic | ✅ |
-| Beam break | — | Space between notes | ✅ |
-| Triplet | `<tuplet>` | `(3CDE` | ✅ |
-| Quintuplet | `<time-modification>` | `(5CDEFG` | ✅ |
-| Custom tuplet | `<actual-notes>/<normal-notes>` | `(5:4CDEFG` | ✅ |
-| Nested tuplets | — | — | ⚠️ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<direction>` | ✅ | Container |
+| `<direction-type>` | ✅ | Container |
+| `<rehearsal>` | ❌ | — |
+| `<segno>` | ✅ | `!segno!` |
+| `<coda>` | ✅ | `!coda!` |
+| `<words>` | ✅ | `"^text"` |
+| `<symbol>` | ❌ | — |
+| `<wedge>` | ✅ | `!<(!` `!>(!` |
+| `<dashes>` | ❌ | — |
+| `<bracket>` | ❌ | — |
+| `<pedal>` | ⚠️ | `!ped!` |
+| `<metronome>` | ✅ | `Q:` |
+| `<beat-unit>` | ✅ | — |
+| `<beat-unit-dot>` | ✅ | — |
+| `<beat-unit-tied>` | ❌ | — |
+| `<per-minute>` | ✅ | — |
+| `<metronome-note>` | ❌ | — |
+| `<metronome-relation>` | ❌ | — |
+| `<metronome-arrows>` | ❌ | — |
+| `<metronome-beam>` | ❌ | — |
+| `<metronome-dot>` | ❌ | — |
+| `<metronome-tied>` | ❌ | — |
+| `<metronome-tuplet>` | ❌ | — |
+| `<metronome-type>` | ❌ | — |
+| `<octave-shift>` | ⚠️ | `8va` |
+| `<harp-pedals>` | ❌ | `%%harp` |
+| `<pedal-tuning>` | ❌ | — |
+| `<pedal-step>` | ❌ | — |
+| `<pedal-alter>` | ❌ | — |
+| `<damp>` | ❌ | — |
+| `<damp-all>` | ❌ | — |
+| `<eyeglasses>` | 🚫 | — |
+| `<string-mute>` | ❌ | — |
+| `<scordatura>` | 🚫 | — |
+| `<accord>` | 🚫 | — |
+| `<image>` | 🚫 | — |
+| `<principal-voice>` | ❌ | — |
+| `<percussion>` | ✅ | Container |
+| `<glass>` | ❌ | — |
+| `<metal>` | ❌ | — |
+| `<wood>` | ❌ | — |
+| `<pitched>` | ❌ | — |
+| `<membrane>` | ❌ | — |
+| `<effect>` | ❌ | — |
+| `<timpani>` | ❌ | — |
+| `<beater>` | ❌ | — |
+| `<stick>` | ❌ | — |
+| `<stick-location>` | ❌ | — |
+| `<stick-material>` | ❌ | — |
+| `<stick-type>` | ❌ | — |
+| `<other-percussion>` | ❌ | — |
+| `<other-direction>` | ✅ | — |
+| `<accordion-registration>` | ❌ | `%%accordion` |
+| `<accordion-high>` | ❌ | — |
+| `<accordion-middle>` | ❌ | — |
+| `<accordion-low>` | ❌ | — |
+| `<staff-divide>` | ❌ | — |
+| `<offset>` | ❌ | — |
+| `<sound>` | ✅ | Partially |
+| `<swing>` | ❌ | `%%swing` |
+| `<swing-type>` | ❌ | — |
+| `<swing-style>` | ❌ | — |
+| `<first>` | ❌ | — |
+| `<second>` | ❌ | — |
+| `<straight>` | ❌ | — |
+| `<instrument-change>` | ❌ | — |
+| `<midi-device>` | ✅ | — |
+| `<midi-instrument>` | ✅ | — |
+| `<play>` | ❌ | — |
+| `<listening>` | 🚫 | — |
+| `<other-listening>` | 🚫 | — |
 
----
+## Harmony
 
-## 10. Grace Notes
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<harmony>` | ✅ | `"Cm7"` |
+| `<root>` | ✅ | Root note |
+| `<root-step>` | ✅ | — |
+| `<root-alter>` | ✅ | — |
+| `<function>` | ❌ | — |
+| `<numeral>` | ❌ | — |
+| `<numeral-root>` | ❌ | — |
+| `<numeral-alter>` | ❌ | — |
+| `<numeral-key>` | ❌ | — |
+| `<numeral-fifths>` | ❌ | — |
+| `<numeral-mode>` | ❌ | — |
+| `<kind>` | ✅ | Chord type |
+| `<inversion>` | ❌ | — |
+| `<bass>` | ✅ | `/E` slash |
+| `<bass-step>` | ✅ | — |
+| `<bass-alter>` | ✅ | — |
+| `<bass-separator>` | ❌ | — |
+| `<degree>` | ✅ | Extensions |
+| `<degree-value>` | ✅ | — |
+| `<degree-alter>` | ✅ | — |
+| `<degree-type>` | ✅ | — |
+| `<frame>` | ❌ | `%%frame` |
+| `<frame-strings>` | ❌ | — |
+| `<frame-frets>` | ❌ | — |
+| `<first-fret>` | ❌ | — |
+| `<frame-note>` | ❌ | — |
+| `<barre>` | ❌ | — |
+| `<staff>` | ✅ | — |
+| `<offset>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Grace note | `<grace>` | `{c}C` | ✅ |
-| Acciaccatura | `<grace slash="yes">` | `{/c}C` | ✅ |
-| Appoggiatura | `<grace>` | `{c}C` | ✅ |
-| Grace chord | — | `{[ceg]}C` | ✅ |
+## Figured Bass
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<figured-bass>` | ❌ | `%%fb` |
+| `<figure>` | ❌ | — |
+| `<prefix>` | ❌ | — |
+| `<figure-number>` | ❌ | — |
+| `<suffix>` | ❌ | — |
+| `<extend>` | ❌ | — |
 
-## 11. Technical Notation
+## Barline
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Up bow | `<up-bow>` | `!upbow!` or `u` | ✅ |
-| Down bow | `<down-bow>` | `!downbow!` or `v` | ✅ |
-| Open string | `<open-string>` | `!open!` | ✅ |
-| Snap pizz | `<snap-pizzicato>` | `!snap!` | ✅ |
-| Fingering | `<fingering>` | `!1!`-`!5!` | ✅ |
-| String number | `<string>` | `!1!`-`!6!` (TAB) | ✅ |
-| Fret | `<fret>` | Auto-calculated | ✅ |
-| Hammer-on | `<hammer-on>` | `!hammer-on!` | ❌ |
-| Pull-off | `<pull-off>` | `!pull-off!` | ❌ |
-| Bend | `<bend>` | `!bend!` | ❌ |
-| Tap | `<tap>` | `!tap!` | ❌ |
-| Heel/Toe | `<heel>`, `<toe>` | `!heel!`, `!toe!` | ❌ |
-| Harmonic | `<harmonic>` | `!harmonic!` | ⚠️ |
-| Double tongue | `<double-tongue>` | `!double-tongue!` | ❌ |
-| Triple tongue | `<triple-tongue>` | `!triple-tongue!` | ❌ |
-| Stopped | `<stopped>` | `!mute!` | ✅ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<barline>` | ✅ | `|` `||` `|]` |
+| `<bar-style>` | ✅ | Various |
+| `<wavy-line>` | ✅ | — |
+| `<segno>` | ✅ | `!segno!` |
+| `<coda>` | ✅ | `!coda!` |
+| `<fermata>` | ✅ | — |
+| `<ending>` | ✅ | `[1` `[2` |
+| `<repeat>` | ✅ | `|:` `:|` |
 
----
+## Print
 
-## 12. Text & Directions
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<print>` | ⚠️ | — |
+| `<page-layout>` | ❌ | — |
+| `<system-layout>` | ❌ | — |
+| `<staff-layout>` | ❌ | — |
+| `<measure-layout>` | ❌ | — |
+| `<measure-numbering>` | ❌ | `%%barnumbers` |
+| `<part-name-display>` | ❌ | — |
+| `<part-abbreviation-display>` | ❌ | — |
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Text above | `<words>` (above) | `"^text"` | ✅ |
-| Text below | `<words>` (below) | `"_text"` | ✅ |
-| Text left | `<words>` (left) | `"<text"` | ✅ |
-| Text right | `<words>` (right) | `">text"` | ✅ |
-| Tempo | `<metronome>` | `Q:1/4=120` | ✅ |
-| Segno | `<segno>` | `!segno!` | ✅ |
-| Coda | `<coda>` | `!coda!` | ✅ |
-| D.S. | — | `!D.S.!` | ✅ |
-| D.C. | — | `!D.C.!` | ✅ |
-| Fine | — | `!fine!` | ⚠️ |
-| Rehearsal mark | `<rehearsal>` | — | ❌ |
-| Eyeglasses | `<eyeglasses>` | — | 🚫 |
-| Pedal | `<pedal>` | `!ped!`, `!ped-up!` | ⚠️ |
+## Grouping
 
----
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<grouping>` | ❌ | — |
+| `<feature>` | ❌ | — |
 
-## 13. Chord Symbols
+## Backup/Forward
 
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Root | `<root>` | `"C"` | ✅ |
-| Kind | `<kind>` | `"Cm"`, `"C7"` | ✅ |
-| Bass | `<bass>` | `"C/E"` | ✅ |
-| Degree | `<degree>` | `"Cm7b5"` | ✅ |
-| Frame (diagram) | `<frame>` | — | ❌ |
-| Function | `<function>` | — | ❌ |
-
----
-
-## 14. Lyrics
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Syllables | `<syllabic>` | `w: lyr-ics` | ✅ |
-| Melisma | `<extend>` | `w: word_` | ✅ |
-| Multiple verses | `<lyric number="N">` | Multiple `w:` lines | ✅ |
-| Elision | `<elision>` | `w: wo~rd` | ✅ |
-| Humming | `<humming>` | — | 🚫 |
-| Laughing | `<laughing>` | — | 🚫 |
-
----
-
-## 15. Multi-Voice & Staff
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Voices | `<voice>` | `V:1`, `V:2` | ✅ |
-| Grand staff | `<staves>` | `%%score {1 2}` | ✅ |
-| Bracket group | `<group-symbol>bracket` | `%%score [1 2]` | ✅ |
-| Brace group | `<group-symbol>brace` | `%%score {1 2}` | ✅ |
-| Voice overlay | `<backup>` | `&` | ✅ |
-| Staff assignment | `<staff>` | Auto | ✅ |
-| Cue notes | `<cue>` | `!cue!` | ✅ |
-
----
-
-## 16. Percussion
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Unpitched | `<unpitched>` | `I:percmap` | ✅ |
-| Notehead | `<notehead>` | `I:percmap ... x` | ✅ |
-| MIDI mapping | — | `I:percmap ... 42` | ✅ |
-| Drummap | — | `%%drummap` | ⚠️ |
-| Beater | `<beater>` | — | ❌ |
-| Stick | `<stick>` | — | ❌ |
-
----
-
-## 17. Figured Bass
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Figured bass | `<figured-bass>` | — | ❌ |
-| Figure | `<figure>` | — | ❌ |
-| Figure number | `<figure-number>` | — | ❌ |
-| Prefix/Suffix | `<prefix>`, `<suffix>` | — | ❌ |
-| Extend | `<extend>` | — | ❌ |
-
----
-
-## 18. Layout & Formatting
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Page break | `<print new-page>` | `%%newpage` | ❌ |
-| System break | `<print new-system>` | `%%newline` | ⚠️ |
-| Page layout | `<page-layout>` | `%%pagewidth` | ❌ |
-| Staff spacing | `<staff-layout>` | `%%staffsep` | ❌ |
-| Measure numbers | `<measure-numbering>` | `%%barnumbers` | ❌ |
-| Credits | `<credit>` | — | ❌ |
-
----
-
-## 19. Sound & Playback
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Tempo | `<sound tempo>` | `Q:1/4=120` | ✅ |
-| Dynamics | `<sound dynamics>` | — | ❌ |
-| MIDI program | `<midi-instrument>` | `I:MIDI` | ✅ |
-| Swing | `<swing>` | — | ❌ |
-| Transpose | `<transpose>` | — | ❌ |
-
----
-
-## 20. Advanced/Specialized
-
-| Feature | MusicXML | ABC+ Syntax | Status |
-|---------|----------|-------------|--------|
-| Image | `<image>` | — | 🚫 |
-| Link | `<link>` | — | 🚫 |
-| Bookmark | `<bookmark>` | — | 🚫 |
-| Grouping | `<grouping>` | — | ❌ |
-| Feature | `<feature>` | — | ❌ |
-| Glyph | `<glyph>` | — | 🚫 |
-| Scordatura | `<scordatura>` | — | 🚫 |
-| Harp pedals | `<harp-pedals>` | — | ❌ |
-| Accordion reg. | `<accordion-registration>` | — | ❌ |
+| Element | Status | ABC+ Mapping |
+|---------|--------|--------------|
+| `<backup>` | ✅ | `&` overlay |
+| `<forward>` | ✅ | — |
 
 ---
 
@@ -333,30 +560,31 @@
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| ✅ Done & Working | ~95 | ~65% |
-| ⚠️ Done, Needs Fix | ~12 | ~8% |
-| ❌ Not Done | ~32 | ~22% |
-| 🚫 Can't Do | ~8 | ~5% |
-| **Total Elements** | ~147 | 100% |
+| ✅ Done & Working | ~125 | ~45% |
+| ⚠️ Needs Fix | ~10 | ~4% |
+| ❌ Not Done | ~115 | ~42% |
+| 🚫 Can't Do | ~25 | ~9% |
+| **Total** | ~275 | 100% |
 
 ---
 
-## Priority Queue
+## Priority Implementation Queue
 
 ### High Priority (Common Use)
 
-1. Extended dynamics: `!fp!`, `!sfp!`, `!fz!`
-2. Extended articulations: `!staccatissimo!`, `!caesura!`
-3. Guitar chord diagrams: `%%frame`
-4. Figured bass: `%%fb`
+1. Extended dynamics: `<fp>`, `<sfp>`, `<fz>`, `<sf>`, `<sffz>`, `<sfzp>`
+2. Extended articulations: `<staccatissimo>`, `<caesura>`, `<doit>`, `<falloff>`
+3. Guitar chord diagrams: `<frame>`, `<frame-note>`, `<barre>`
+4. Rehearsal marks: `<rehearsal>`
 
 ### Medium Priority
 
-5. Technical: `!hammer-on!`, `!pull-off!`, `!bend!`
-2. Layout: `%%newpage`, `%%newline`
-3. Extended ornaments
+5. Figured bass: `<figured-bass>`, `<figure>`
+2. Technical: `<hammer-on>`, `<pull-off>`, `<bend>`, `<tap>`
+3. Layout: `<page-layout>`, `<system-layout>`, `<measure-numbering>`
+4. Extended ornaments: `<delayed-turn>`, `<shake>`, `<schleifer>`
 
 ### Low Priority
 
-8. Harp/accordion
-2. Advanced structure
+9. Harp/Accordion: `<harp-pedals>`, `<accordion-registration>`
+2. Playback: `<swing>`, `<mute>`, `<play>`
