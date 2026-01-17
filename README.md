@@ -1,6 +1,8 @@
 # ABC+ Notation Specification
 
-**ABC+** is an extended version of [ABC notation](https://abcnotation.com/) with additional directives for modern music applications, game audio, and enhanced MusicXML export.
+![ABC+ Spec Banner](assets/banner.png)
+
+**ABC+** is a professional evolution of the [ABC notation](https://abcnotation.com/) standard. It introduces high-fidelity musical directives designed for modern music applications, game audio orchestration, and advanced MusicXML 4.0 interchange.
 
 ## Quick Start
 
