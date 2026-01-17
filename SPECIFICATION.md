@@ -1,6 +1,6 @@
 # ABC+ Specification
 
-Version: 1.0.0  
+Version: 1.2.0  
 Status: Draft  
 Last Updated: 2026-01-17
 
@@ -13,6 +13,7 @@ ABC+ extends standard ABC notation with custom directives for enhanced music app
 - Custom performance directives
 - Game/interactive audio markers
 - Enhanced articulation control
+- Playback and Layout refinement
 - Structured metadata
 
 ---
@@ -31,35 +32,11 @@ Custom directives use the `%%` prefix followed by the directive name and attribu
 
 Adds performance directions that map to MusicXML `<direction>` elements.
 
-**Syntax:**
+**Syntax:** `%%dir attribute="value" [attribute2="value2" ...]`
 
-```
-%%dir attribute="value" [attribute2="value2" ...]
-```
+**Attributes:** mood, intensity.
 
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `mood` | string | Performance mood (e.g., "joyful", "aggressive") |
-| `intensity` | float | Intensity level 0.0-1.0 |
-
-**Example:**
-
-```abc
-%%dir mood="melancholic" intensity="0.7"
-C2DE F2GA |
-```
-
-**MusicXML Mapping:**
-
-```xml
-<direction placement="above">
-  <direction-type>
-    <words>dir: mood='melancholic' intensity='0.7'</words>
-  </direction-type>
-</direction>
-```
+**Example:** `%%dir mood="melancholic" intensity="0.7"`
 
 ---
 
@@ -67,24 +44,7 @@ C2DE F2GA |
 
 Defines audio effects or processing instructions.
 
-**Syntax:**
-
-```
-%%fx name="effect_name" [speed="value"]
-```
-
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `name` | string | Effect name (e.g., "reverb", "distortion") |
-| `speed` | string | Effect speed/rate |
-
-**Example:**
-
-```abc
-%%fx name="tremolo" speed="fast"
-```
+**Syntax:** `%%fx name="effect_name" [speed="value"]`
 
 ---
 
@@ -92,23 +52,7 @@ Defines audio effects or processing instructions.
 
 Marks harmonic or structural analysis points.
 
-**Syntax:**
-
-```
-%%analysis function="value"
-```
-
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `function` | string | Harmonic function (e.g., "I", "V7", "ii") |
-
-**Example:**
-
-```abc
-%%analysis function="V7/IV"
-```
+**Syntax:** `%%analysis function="value"`
 
 ---
 
@@ -116,25 +60,7 @@ Marks harmonic or structural analysis points.
 
 Marks synchronization points for game/interactive audio.
 
-**Syntax:**
-
-```
-%%game_state state="value"
-```
-
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `state` | string | Game state identifier |
-
-**Example:**
-
-```abc
-%%game_state state="boss_fight_intro"
-```
-
-**MusicXML Mapping:** None (stripped during conversion, used by game engines)
+**Syntax:** `%%game_state state="value"`
 
 ---
 
@@ -142,25 +68,7 @@ Marks synchronization points for game/interactive audio.
 
 Marks loop points for audio playback.
 
-**Syntax:**
-
-```
-%%loop safe="true|false"
-```
-
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `safe` | boolean | Whether loop point is musically safe |
-
-**Example:**
-
-```abc
-%%loop safe="true"
-```
-
-**MusicXML Mapping:** None (metadata only)
+**Syntax:** `%%loop safe="true|false"`
 
 ---
 
@@ -168,34 +76,7 @@ Marks loop points for audio playback.
 
 Applies articulation to the following note(s).
 
-**Syntax:**
-
-```
-%%art type="articulation_type"
-```
-
-**Attributes:**
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `type` | string | Articulation type (e.g., "staccato", "accent") |
-
-**Example:**
-
-```abc
-%%art type="staccato"
-C D E F |
-```
-
-**MusicXML Mapping:**
-
-```xml
-<notations>
-  <articulations>
-    <staccato/>
-  </articulations>
-</notations>
-```
+**Syntax:** `%%art type="articulation_type"`
 
 ---
 
@@ -203,112 +84,148 @@ C D E F |
 
 ABC+ supports extended decoration syntax using `!decoration!` notation.
 
-### 4.1 Custom Slurs
+### 4.1 Parameterized Notations
 
 ```abc
-!1slur-start! C D E !1slur-end! F |  % Named slur
+!fingering(1)! !fret(5)! !string(6)! C |  % Maps to <technical> elements
 ```
 
-### 4.2 Custom Tuplets
+### 4.2 Positioned Text
 
 ```abc
-!3:2 tuplet-start! C D E !tuplet-end! |
-```
-
-### 4.3 Positioned Text
-
-```abc
-!@x,y text("Custom positioned text")! C |
+!@above text("Custom positioned text")! C |  % Use @above or @below
 ```
 
 ---
 
-## 5. Percussion Mapping
+## 5. Layout & Formatting Directives
 
-### 5.1 I:percmap Directive
+### 5.1 Rehearsal Marks (`%%marker`)
 
-Maps ABC pitches to percussion sounds.
+Adds a rehearsal mark (e.g., A, B, Chorus) to the score.
 
-**Syntax:**
-
-```
-I:percmap pitch [display-step] [midi-number] [notehead]
+```abc
+%%marker Chorus
 ```
 
-**Example:**
+### 5.2 Measure Numbering (`%%measurenumbering`)
+
+Toggles measure numbering for the system or score.
+
+```abc
+%%measurenumbering yes
+```
+
+### 5.3 Vertical Spacing (`%%vskip`)
+
+Adjusts vertical distance between systems in MusicXML tenths.
+
+```abc
+%%vskip 20
+```
+
+### 5.4 Separators (`%%sep`)
+
+Adds a horizontal separator line between systems.
+
+```abc
+%%sep
+```
+
+---
+
+## 6. Playback Control Directives
+
+### 6.1 Swing (`%%swing`, `%%swing-off`)
+
+Toggles swing playback interpretation.
+
+```abc
+%%swing
+%%swing-off
+```
+
+### 6.2 Mute (`%%mute`, `%%mute-off`)
+
+Toggles instrument muting for playback.
+
+```abc
+%%mute
+%%mute-off
+```
+
+---
+
+## 7. Harmony & Bass Directives
+
+### 7.1 Guitar Chord Frames (`%%frame`)
+
+**Syntax:** `%%frame <name> (<fret>)<pattern>`
+
+```abc
+%%frame C (0)x32010
+```
+
+### 7.2 Figured Bass (`%%fb`)
+
+**Syntax:** `%%fb <figures>`
+
+```abc
+%%fb 6 4 3
+```
+
+---
+
+## 8. Percussion Mapping
+
+### 8.1 I:percmap Directive
+
+Maps ABC pitches to percussion sounds and noteheads.
 
 ```abc
 I:percmap ^c' E5 42 x        % Hi-hat
-I:percmap _B, D4 36 normal   % Bass drum
-```
-
-### 5.2 %%drummap Directive (Legacy)
-
-```abc
-%%drummap C bass_drum
-%%drummap E snare
-%%drummap ^G hihat_closed
 ```
 
 ---
 
-## 6. Lyric Extensions
+## 9. Lyric Extensions
 
-### 6.1 Analysis Abbreviations
+### 9.1 Analysis Abbreviations
 
-Lyrics starting with `^` are expanded as analysis annotations:
+Lyrics starting with `^` are expanded as analysis annotations.
 
-| Abbreviation | Expansion |
-|--------------|-----------|
-| `^CT` | Chord Tone |
-| `^P` | Passing Tone |
-| `^N` | Neighbor Tone |
-| `^Sus` | Suspension |
-| `^App` | Appoggiatura |
-| `^Ant` | Anticipation |
-| `^Esc` | Escape Tone |
-| `^Ped` | Pedal Point |
+**Example:** `w: ^CT ^P ^CT`
 
-**Example:**
+### 9.2 Melisma Control
 
-```abc
-C E G c |
-w: ^CT ^P ^CT ^CT
-```
-
-### 6.2 Melisma Control
-
-```abc
-C D E F |
-w: word _melisma-start * * _melisma-end next
-```
+Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 7. MusicXML Mapping Reference
+## 10. MusicXML Mapping Reference
 
 | ABC+ Element | MusicXML Element |
 |--------------|------------------|
 | `%%dir` | `<direction><words>` |
-| `%%fx` | `<direction><words>` |
-| `%%analysis` | `<direction><words>` |
-| `%%art` | `<notations><articulations>` |
-| `%%game_state` | *(stripped)* |
-| `%%loop` | *(stripped)* |
-| `I:percmap` | `<unpitched>` |
+| `%%swing` | `<sound swing="yes"/>` |
+| `%%mute` | `<sound mute="yes"/>` |
+| `%%vskip` | `<system-distance>` |
+| `%%marker` | `<rehearsal>` |
+| `!fingering(N)!` | `<technical><fingering>` |
 
 ---
 
-## 8. Version History
+## 11. Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0.0 | 2026-01-17 | Initial specification |
+| 1.2.0 | 2026-01-17 | Added playback and advanced layout directives |
+| 1.1.0 | 2026-01-17 | Added chord frames and figured bass |
+| 1.0.0 | 2026-01-16 | Initial specification |
 
 ---
 
-## 9. References
+## 12. References
 
 - [ABC Notation Standard v2.1](https://abcnotation.com/wiki/abc:standard:v2.1)
 - [MusicXML 4.0 Specification](https://www.w3.org/2021/06/musicxml40/)
-- [abc2xml Converter](https://wim.vree.org/svgParse/abc2xml.html)

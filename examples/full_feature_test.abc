@@ -1,0 +1,41 @@
+X:1
+T:ABC+ Full Feature Test
+C:ABC+ Designer
+A:Arranger Name
+O:Lyricist Name
+Z:Translator Name
+G:Copyright 2026
+M:4/4
+L:1/4
+Q:1/4=100
+K:C
+I:measurenumbering yes
+%%newpage
+%%frame C (5)x32010
+%%frame G 320003
+%%marker Introduction
+"C" !p! !staccato!C !pp! (D | "G" !f! !accent!E !ff! !marcato!F) |
+%%newline
+%%marker Development
+!fp! !sfz! !staccato!G !n! !pppp! !accent!A | !ffff! !ffffff! !marcato!B !sfp! c |
+!delayed-turn! C !shake! D | !schleifer! E !haydn! F |
+!hammer-on(! G !hammer-on)! A | !pull-off(! B !pull-off)! c |
+%%fb #6 4 3b
+!soft-accent! G !caesura! A | !swing! B !mute! c |
+%%measurenb 10
+C D E F |
+V:1
+%%swing on
+C D E F |
+V:2
+K:perc
+!hihat! C !snare! D !kick! E !crash! F |
+w: test-ing ly-rics with mel-is-ma*
+V:3
+K:C
+"Am" !fingering(1)! !fret(5)! !string(6)! C D E F |
+!bend! G !tap! A !heel! B !toe! c |
+!fingernails! C !golpe! D !double-tongue! E !triple-tongue! F |
+!handbell! G !hole! A !arrow! B !brass-bend! c |
+!snap! C !soft-pizzicato! D !scordatura! E !with-tongue! F |
+!marker Final! G A B c |]
