@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Bidirectional conversion support between ABC+ and MEI
   - Mapping for all core ABC+ elements to MEI equivalents
   - Support for MEI-specific scholarly features
+- Additional format compatibility analysis:
+  - Dorico
+  - Flat.io
+  - TuxGuitar
+  - StaffPad
+  - NoteWorthy Composer
+- Updated compatibility chart with all new formats
+- Comprehensive compatibility analysis documents for each new format
 
 ## [1.3.0] - 2026-03-15
 

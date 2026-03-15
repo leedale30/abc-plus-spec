@@ -8,67 +8,69 @@ This chart provides a comprehensive overview of the compatibility between ABC+ n
 
 ### 2.1 Core Elements
 
-| Element | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI |
-|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|
-| Notes | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| Rests | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| Chords | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Key signature | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Time signature | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Tempo | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Lyrics | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Voices | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| Slurs | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| Ties | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
+| Element | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI | Dorico | Flat.io | TuxGuitar | StaffPad | NoteWorthy Composer |
+|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|--------|--------|-----------|----------|---------------------|
+| Notes | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Rests | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Chords | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Key signature | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Time signature | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Tempo | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Lyrics | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| Voices | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Slurs | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Ties | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### 2.2 ABC+ Extensions
 
-| Element | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI |
-|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|
-| `%%dir` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `%%fx` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `%%analysis` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `%%game_state` | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ~ |
-| `%%loop` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `%%art` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!fingering(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `!fret(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `!string(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `!@above text("...")!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!staccato!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!accent!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!marcato!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!soft-accent!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!caesura!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!bend!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!hammer-on(!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `!pull-off(!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `%%marker` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `%%measurenumbering` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `%%vskip` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `%%sep` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| `%%swing` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `%%mute` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `%%frame` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `%%fb` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| `I:percmap` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
+| Element | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI | Dorico | Flat.io | TuxGuitar | StaffPad | NoteWorthy Composer |
+|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|--------|--------|-----------|----------|---------------------|
+| `%%dir` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| `%%fx` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ~ | ~ | ✓ | ~ |
+| `%%analysis` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ~ | ✗ | ~ | ~ |
+| `%%game_state` | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ~ | ~ | ✗ | ✗ | ~ | ~ |
+| `%%loop` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ |
+| `%%art` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!fingering(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!fret(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!string(N)!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!@above text("...")!` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| `!staccato!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!accent!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!marcato!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!soft-accent!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ |
+| `!caesura!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
+| `!bend!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!hammer-on(!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `!pull-off(!` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `%%marker` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `%%measurenumbering` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| `%%vskip` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ~ | ✗ | ✓ | ~ |
+| `%%sep` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ~ | ✗ | ✓ | ~ |
+| `%%swing` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| `%%mute` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ~ | ✓ | ✓ |
+| `%%frame` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `%%fb` | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
+| `I:percmap` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ~ | ~ | ✓ | ~ |
 
 ### 2.3 Format-Specific Features
 
-| Feature | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI |
-|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|
-| Tablature | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| Drum mapping | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Microtonal notation | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
-| Advanced layout | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✗ | ✓ |
-| Performance directions | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ |
-| MIDI control | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ~ |
-| Game state | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ~ |
-| Style selection | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Accompaniment generation | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ |
-| Scholarly annotations | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ |
-| Musicological analysis | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ |
-| Editorial markup | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ |
+| Feature | ABC+ | MusicXML | MIDI 1.0 | MIDI 2.0 | LilyPond | Guitar Pro | Finale | Sibelius | MuseScore | Noteflight | CMN | Band-in-a-Box | MEI | Dorico | Flat.io | TuxGuitar | StaffPad | NoteWorthy Composer |
+|---------|------|----------|----------|----------|----------|------------|--------|----------|-----------|-----------|-----|---------------|-----|--------|--------|-----------|----------|---------------------|
+| Tablature | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Drum mapping | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
+| Microtonal notation | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✗ | ✓ | ~ |
+| Advanced layout | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✗ | ✓ | ✓ | ~ | ✗ | ✓ | ~ |
+| Performance directions | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ | ~ | ~ | ✓ | ✓ |
+| MIDI control | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ~ | ✓ | ~ | ~ | ✓ | ✓ |
+| Game state | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ~ | ~ | ✗ | ✗ | ~ | ~ |
+| Style selection | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
+| Accompaniment generation | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ~ | ✗ | ✗ | ~ | ~ |
+| Scholarly annotations | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ | ~ | ~ | ✗ | ~ | ~ |
+| Musicological analysis | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ | ~ | ~ | ✗ | ~ | ~ |
+| Editorial markup | ✗ | ~ | ✗ | ✗ | ~ | ✗ | ~ | ~ | ~ | ~ | ~ | ✗ | ✓ | ~ | ~ | ✗ | ~ | ~ |
+| Handwriting recognition | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ |
+| Collaborative editing | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ~ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ~ | ✗ |
 
 ## 3. Compatibility Legend
 
@@ -83,6 +85,8 @@ This chart provides a comprehensive overview of the compatibility between ABC+ n
 - **MusicXML**: Highest compatibility with ABC+, as it was the primary target for the original mapping
 - **LilyPond**: Very high compatibility, especially for notation and layout
 - **MEI**: Very high compatibility, especially for scholarly features and detailed notation
+- **Dorico**: Very high compatibility, similar to other professional notation software
+- **StaffPad**: Very high compatibility, with support for most ABC+ features
 - **Guitar Pro**: High compatibility, especially for guitar-specific features
 - **Finale/Sibelius/MuseScore**: High compatibility with core elements
 
@@ -91,6 +95,9 @@ This chart provides a comprehensive overview of the compatibility between ABC+ n
 - **MIDI 1.0**: Good compatibility for core musical elements, limited for text-based elements
 - **MIDI 2.0**: Better compatibility than MIDI 1.0, especially for expressiveness
 - **Noteflight**: Good compatibility with core elements, limited for advanced features
+- **Flat.io**: Good compatibility with core elements, limited support for some advanced features
+- **TuxGuitar**: Good compatibility for guitar-specific features, limited support for some notation elements
+- **NoteWorthy Composer**: Good compatibility with core elements, limited support for some advanced features
 - **Band-in-a-Box**: Good compatibility for chord progressions and basic song structure, limited for detailed notation
 
 ### 4.3 Low Compatibility Areas
@@ -114,6 +121,8 @@ This chart provides a comprehensive overview of the compatibility between ABC+ n
 
 ## 6. Conclusion
 
-ABC+ has good compatibility with most common music notation formats, especially for core musical elements. The highest compatibility is with MusicXML, LilyPond, and professional notation software like Finale and Sibelius.
+ABC+ has excellent compatibility with most common music notation formats, especially for core musical elements. The highest compatibility is with MusicXML, LilyPond, MEI, Dorico, StaffPad, and other professional notation software like Finale and Sibelius.
 
 While there are some format-specific features that may not map directly, the core musical information can be effectively converted between most formats. By using MusicXML as an intermediate format, the ABC+ to MusicXML converter app can support a wide range of music notation formats with minimal additional development effort.
+
+The addition of Dorico, Flat.io, TuxGuitar, StaffPad, and NoteWorthy Composer to the compatibility analysis further demonstrates the versatility of ABC+ as a notation format that can bridge the gap between different music notation systems, from professional software to web-based platforms, specialized tools for string instruments, and affordable notation software for casual users.
