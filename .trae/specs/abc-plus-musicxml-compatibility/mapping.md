@@ -1,210 +1,19 @@
-# ABC+ Specification
+# ABC+ to MusicXML Comprehensive Mapping Document
 
-Version: 1.4.0  
-Status: Draft  
-Last Updated: 2026-03-16
+## 1. Introduction
 
----
+This document provides a comprehensive bidirectional mapping between ABC+ notation and MusicXML 4.0 format. The goal is to enable seamless conversion between the two formats, ensuring that all musical information is preserved accurately.
 
-## 1. Overview
+## 2. Mapping Conventions
 
-ABC+ extends standard ABC notation with custom directives for enhanced music applications. It maintains full backward compatibility with ABC 2.1 while adding support for:
+- **ABC+ to MusicXML**: Shows how ABC+ elements are mapped to MusicXML elements
+- **MusicXML to ABC+**: Shows how MusicXML elements are mapped to ABC+ elements
+- **Notes**: Additional information about the mapping
+- **Examples**: Sample code demonstrating the mapping
 
-- Custom performance directives
-- Game/interactive audio markers
-- Enhanced articulation control
-- Playback and Layout refinement
-- Structured metadata
+## 3. Standard ABC 2.1 Elements
 
----
-
-## 2. Standard ABC Compatibility
-
-ABC+ supports all standard ABC 2.1 notation. See [ABC Notation Standard](https://abcnotation.com/wiki/abc:standard:v2.1) for the base specification.
-
----
-
-## 3. ABC+ Custom Directives
-
-Custom directives use the `%%` prefix followed by the directive name and attributes.
-
-### 3.1 Direction Directive (`%%dir`)
-
-Adds performance directions that map to MusicXML `<direction>` elements.
-
-**Syntax:** `%%dir attribute="value" [attribute2="value2" ...]`
-
-**Attributes:** mood, intensity.
-
-**Example:** `%%dir mood="melancholic" intensity="0.7"`
-
----
-
-### 3.2 Effects Directive (`%%fx`)
-
-Defines audio effects or processing instructions.
-
-**Syntax:** `%%fx name="effect_name" [speed="value"]`
-
----
-
-### 3.3 Analysis Directive (`%%analysis`)
-
-Marks harmonic or structural analysis points.
-
-**Syntax:** `%%analysis function="value"`
-
----
-
-### 3.4 Game State Directive (`%%game_state`)
-
-Marks synchronization points for game/interactive audio.
-
-**Syntax:** `%%game_state state="value"`
-
----
-
-### 3.5 Loop Directive (`%%loop`)
-
-Marks loop points for audio playback.
-
-**Syntax:** `%%loop safe="true|false"`
-
----
-
-### 3.6 Articulation Directive (`%%art`)
-
-Applies articulation to the following note(s).
-
-**Syntax:** `%%art type="articulation_type"`
-
----
-
-## 4. Enhanced Decorations
-
-ABC+ supports extended decoration syntax using `!decoration!` notation.
-
-### 4.1 Parameterized Notations
-
-```abc
-!fingering(1)! !fret(5)! !string(6)! C |  % Maps to <technical> elements
-```
-
-### 4.2 Positioned Text
-
-```abc
-!@above text("Custom positioned text")! C |  % Use @above or @below
-```
-
----
-
-## 5. Layout & Formatting Directives
-
-### 5.1 Rehearsal Marks (`%%marker`)
-
-Adds a rehearsal mark (e.g., A, B, Chorus) to the score.
-
-```abc
-%%marker Chorus
-```
-
-### 5.2 Measure Numbering (`%%measurenumbering`)
-
-Toggles measure numbering for the system or score.
-
-```abc
-%%measurenumbering yes
-```
-
-### 5.3 Vertical Spacing (`%%vskip`)
-
-Adjusts vertical distance between systems in MusicXML tenths.
-
-```abc
-%%vskip 20
-```
-
-### 5.4 Separators (`%%sep`)
-
-Adds a horizontal separator line between systems.
-
-```abc
-%%sep
-```
-
----
-
-## 6. Playback Control Directives
-
-### 6.1 Swing (`%%swing`, `%%swing-off`)
-
-Toggles swing playback interpretation.
-
-```abc
-%%swing
-%%swing-off
-```
-
-### 6.2 Mute (`%%mute`, `%%mute-off`)
-
-Toggles instrument muting for playback.
-
-```abc
-%%mute
-%%mute-off
-```
-
----
-
-## 7. Harmony & Bass Directives
-
-### 7.1 Guitar Chord Frames (`%%frame`)
-
-**Syntax:** `%%frame <name> (<fret>)<pattern>`
-
-```abc
-%%frame C (0)x32010
-```
-
-### 7.2 Figured Bass (`%%fb`)
-
-**Syntax:** `%%fb <figures>`
-
-```abc
-%%fb 6 4 3
-```
-
----
-
-## 8. Percussion Mapping
-
-### 8.1 I:percmap Directive
-
-Maps ABC pitches to percussion sounds and noteheads.
-
-```abc
-I:percmap ^c' E5 42 x        % Hi-hat
-```
-
----
-
-## 9. Lyric Extensions
-
-### 9.1 Analysis Abbreviations
-
-Lyrics starting with `^` are expanded as analysis annotations.
-
-**Example:** `w: ^CT ^P ^CT`
-
-### 9.2 Melisma Control
-
-Use `_` for melisma or `extend` for structured lyrics.
-
----
-
-## 10. MusicXML Mapping Reference
-
-### 10.1 Standard ABC 2.1 Elements
+### 3.1 Header Elements
 
 | ABC Element | MusicXML Element | Notes |
 |-------------|------------------|-------|
@@ -220,6 +29,11 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `Q: (tempo)` | `<metronome><beat-unit><per-minute>` and `<sound tempo>` | Mapped in direction/direction-type/metronome and direction/sound |
 | `K: (key)` | `<key><fifths><mode>` | Mapped in attributes/key |
 | `V: (voice)` | `<voice>` | Mapped in note/voice |
+
+### 3.2 Music Elements
+
+| ABC Element | MusicXML Element | Notes |
+|-------------|------------------|-------|
 | `w: (lyrics)` | `<lyric><syllabic><text>` | Mapped in note/lyric |
 | Chords (e.g., "C") | `<harmony><root><kind>` | Mapped in harmony element |
 | Notes (e.g., C, D, E) | `<note><pitch><step><octave>` | Mapped in note/pitch |
@@ -227,9 +41,9 @@ Use `_` for melisma or `extend` for structured lyrics.
 | Slurs (e.g., ( | `<slur type="start/stop">` | Mapped in note/notations/slur |
 | Barlines | `<barline><bar-style>` | Mapped in barline element |
 
-### 10.2 ABC+ Extension Elements
+## 4. ABC+ Extension Elements
 
-#### 10.2.1 Custom Directives
+### 4.1 Custom Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -240,7 +54,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%loop` | `<repeat>` | Mapped to barline/repeat element |
 | `%%art` | `<articulations>` | Mapped to note/notations/articulations |
 
-#### 10.2.2 Enhanced Decorations
+### 4.2 Enhanced Decorations
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -294,7 +108,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `!kick!` | `<percussion><other-percussion name="kick">` | Mapped in note/notations/technical/percussion |
 | `!crash!` | `<percussion><other-percussion name="crash">` | Mapped in note/notations/technical/percussion |
 
-#### 10.2.3 Layout & Formatting Directives
+### 4.3 Layout & Formatting Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -306,7 +120,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%newline` | `<print new-system="yes">` | Mapped in print element with new-system attribute |
 | `%%measurenb` | `<measure number>` | Mapped in measure element with number attribute |
 
-#### 10.2.4 Playback Control Directives
+### 4.4 Playback Control Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -315,127 +129,161 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%mute` | `<sound mute="yes"/>` | Mapped in direction/sound with mute attribute |
 | `%%mute-off` | `<sound mute="no"/>` | Mapped in direction/sound with mute attribute |
 
-#### 10.2.5 Harmony & Bass Directives
+### 4.5 Harmony & Bass Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
 | `%%frame` | `<harmony><frame>` | Mapped in harmony/frame element |
 | `%%fb` | `<figured-bass><figure>` | Mapped in figured-bass element |
 
-#### 10.2.6 Percussion Mapping
+### 4.6 Percussion Mapping
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
 | `I:percmap` | `<score-instrument>` and `<midi-instrument>` | Mapped in part-list/score-part/score-instrument and midi-instrument |
 
-#### 10.2.7 Lyric Extensions
+### 4.7 Lyric Extensions
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
 | `w: ^CT` | `<lyric><text type="analysis">CT</text>` | Mapped in lyric/text with type attribute |
 | `melisma*` | `<lyric><syllabic>middle</syllabic>` | Mapped in lyric/syllabic element |
 
----
+## 5. MusicXML to ABC+ Mapping
 
-## 11. MEI Mapping Reference
+### 5.1 Core Elements
 
-### 11.1 Standard ABC 2.1 Elements
+| MusicXML Element | ABC+ Element | Notes |
+|------------------|-------------|-------|
+| `<work><work-title>` | `T: (title)` | Mapped from score-partwise/work/work-title |
+| `<creator type="composer">` | `C: (composer)` | Mapped from identification/creator |
+| `<creator type="arranger">` | `A: (arranger)` | Mapped from identification/creator |
+| `<creator type="lyricist">` | `O: (lyricist)` | Mapped from identification/creator |
+| `<creator type="translator">` | `Z: (translator)` | Mapped from identification/creator |
+| `<rights>` | `G: (copyright)` | Mapped from identification/rights |
+| `<time><beats><beat-type>` | `M: (meter)` | Mapped from attributes/time |
+| `<metronome><beat-unit><per-minute>` | `Q: (tempo)` | Mapped from direction/direction-type/metronome |
+| `<key><fifths><mode>` | `K: (key)` | Mapped from attributes/key |
+| `<voice>` | `V: (voice)` | Mapped from note/voice |
+| `<lyric><syllabic><text>` | `w: (lyrics)` | Mapped from note/lyric |
+| `<harmony><root><kind>` | Chords (e.g., "C") | Mapped from harmony element |
+| `<note><pitch><step><octave>` | Notes (e.g., C, D, E) | Mapped from note/pitch |
+| `<note><rest>` | Rests | Mapped from note/rest |
+| `<slur type="start/stop">` | Slurs (e.g., ( | Mapped from note/notations/slur |
+| `<barline><bar-style>` | Barlines | Mapped from barline element |
 
-| ABC Element | MEI Element | Notes |
-|-------------|-------------|-------|
-| `T: (title)` | `<title>` | Mapped to title element |
-| `C: (composer)` | `<composer>` | Mapped to composer element |
-| `A: (arranger)` | `<arranger>` | Mapped to arranger element |
-| `O: (lyricist)` | `<lyricist>` | Mapped to lyricist element |
-| `G: (copyright)` | `<rights>` | Mapped to rights element |
-| `M: (meter)` | `<meter>` | Mapped to meter element |
-| `L: (unit note length)` | `<noteLength>` | Mapped to note length element |
-| `Q: (tempo)` | `<tempo>` | Mapped to tempo element |
-| `K: (key)` | `<keySig>` | Mapped to key signature element |
-| `V: (voice)` | `<voice>` | Mapped to voice element |
-| `w: (lyrics)` | `<lyric>` | Mapped to lyric element |
-| Chords (e.g., "C") | `<harm>` | Mapped to harmony element |
-| Notes (e.g., C, D, E) | `<note>` | Mapped to note element |
-| Rests | `<rest>` | Mapped to rest element |
-| Slurs (e.g., ( | `<slur>` | Mapped to slur element |
-| Barlines | `<barLine>` | Mapped to barline element |
+### 5.2 Direction Elements
 
-### 11.2 ABC+ Extension Elements
+| MusicXML Element | ABC+ Element | Notes |
+|------------------|-------------|-------|
+| `<direction><words>` | `%%dir` | Mapped to %%dir directive |
+| `<direction><direction-type><effect>` | `%%fx` | Mapped to %%fx directive |
+| `<direction><direction-type><rehearsal>` | `%%marker` | Mapped to %%marker directive |
+| `<direction><sound swing="yes"/>` | `%%swing` | Mapped to %%swing directive |
+| `<direction><sound swing="no"/>` | `%%swing-off` | Mapped to %%swing-off directive |
+| `<direction><sound mute="yes"/>` | `%%mute` | Mapped to %%mute directive |
+| `<direction><sound mute="no"/>` | `%%mute-off` | Mapped to %%mute-off directive |
 
-#### 11.2.1 Custom Directives
+### 5.3 Notation Elements
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `%%dir` | `<dir>` | Mapped to direction element |
-| `%%fx` | `<effect>` | Mapped to effect element |
-| `%%analysis` | `<analysis>` | Mapped to analysis element |
-| `%%game_state` | `<annot>` | Mapped to annotation element |
-| `%%loop` | `<repeat>` | Mapped to repeat element |
-| `%%art` | `<artic>` | Mapped to articulation element |
+| MusicXML Element | ABC+ Element | Notes |
+|------------------|-------------|-------|
+| `<note><notations><technical><fingering>` | `!fingering(N)!` | Mapped to !fingering! decoration |
+| `<note><notations><technical><fret>` | `!fret(N)!` | Mapped to !fret! decoration |
+| `<note><notations><technical><string>` | `!string(N)!` | Mapped to !string! decoration |
+| `<note><notations><articulations><staccato>` | `!staccato!` | Mapped to !staccato! decoration |
+| `<note><notations><articulations><accent>` | `!accent!` | Mapped to !accent! decoration |
+| `<note><notations><articulations><strong-accent>` | `!marcato!` | Mapped to !marcato! decoration |
+| `<note><notations><articulations><soft-accent>` | `!soft-accent!` | Mapped to !soft-accent! decoration |
+| `<note><notations><technical><hammer-on type="start">` | `!hammer-on(!` | Mapped to !hammer-on(! decoration |
+| `<note><notations><technical><hammer-on type="stop">` | `!hammer-on)!` | Mapped to !hammer-on)! decoration |
+| `<note><notations><technical><pull-off type="start">` | `!pull-off(!` | Mapped to !pull-off(! decoration |
+| `<note><notations><technical><pull-off type="stop">` | `!pull-off)!` | Mapped to !pull-off)! decoration |
 
-#### 11.2.2 Enhanced Decorations
+### 5.4 Layout Elements
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `!fingering(N)!` | `<fingering>` | Mapped to fingering element |
-| `!fret(N)!` | `<fret>` | Mapped to fret element |
-| `!string(N)!` | `<string>` | Mapped to string element |
-| `!@above text("...")!` | `<dir place="above">` | Mapped to direction with placement |
-| `!@below text("...")!` | `<dir place="below">` | Mapped to direction with placement |
-| `!staccato!` | `<artic artic="staccato">` | Mapped to staccato articulation |
-| `!accent!` | `<artic artic="accent">` | Mapped to accent articulation |
-| `!marcato!` | `<artic artic="marcato">` | Mapped to marcato articulation |
-| `!soft-accent!` | `<artic artic="softAccent">` | Mapped to soft accent articulation |
-| `!caesura!` | `<artic artic="caesura">` | Mapped to caesura articulation |
-| `!bend!` | `<bend>` | Mapped to bend element |
-| `!hammer-on(!` | `<slide type="hammerOn">` | Mapped to hammer-on slide |
-| `!pull-off(!` | `<slide type="pullOff">` | Mapped to pull-off slide |
+| MusicXML Element | ABC+ Element | Notes |
+|------------------|-------------|-------|
+| `<system-distance>` | `%%vskip` | Mapped to %%vskip directive |
+| `<print new-page="yes">` | `%%newpage` | Mapped to %%newpage directive |
+| `<print new-system="yes">` | `%%newline` | Mapped to %%newline directive |
+| `<measure number>` | `%%measurenb` | Mapped to %%measurenb directive |
 
-#### 11.2.3 Layout & Formatting Directives
+## 6. Conversion Rules
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `%%marker` | `<label>` | Mapped to label element |
-| `%%measurenumbering` | `<measureNumbering>` | Mapped to measure numbering element |
-| `%%vskip` | `<space>` | Mapped to space element |
-| `%%sep` | `<divider>` | Mapped to divider element |
+### 6.1 General Rules
 
-#### 11.2.4 Playback Control Directives
+1. **Preservation of Musical Content**: All musical information must be preserved during conversion, including pitch, rhythm, dynamics, and articulation.
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `%%swing` | `<tempo swing="yes">` | Mapped to tempo with swing attribute |
-| `%%mute` | `<mute>` | Mapped to mute element |
+2. **Backward Compatibility**: Conversions should maintain backward compatibility with existing ABC+ documents.
 
-#### 11.2.5 Harmony & Bass Directives
+3. **Semantic Equivalence**: The converted notation should have the same musical meaning as the original.
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `%%frame` | `<chordDiagram>` | Mapped to chord diagram element |
-| `%%fb` | `<figuredBass>` | Mapped to figured bass element |
+4. **Graceful Degradation**: If an element cannot be directly mapped, it should be represented in the closest possible equivalent or noted as an exception.
 
-#### 11.2.6 Percussion Mapping
+### 6.2 Complex Notations
 
-| ABC+ Element | MEI Element | Notes |
-|--------------|-------------|-------|
-| `I:percmap` | `<percussion>` | Mapped to percussion element |
+#### 6.2.1 Articulations
+- Articulations should be mapped to their closest ABC+ decoration equivalent.
+- For complex articulations with multiple components, use multiple ABC+ decorations.
 
----
+#### 6.2.2 Effects
+- Effects should be mapped to the `%%fx` directive with appropriate attributes.
+- If an effect has no direct equivalent, use a descriptive name in the `%%fx` directive.
 
-## 12. Version History
+#### 6.2.3 Layout Directives
+- Layout directives should be mapped to their corresponding ABC+ directives.
+- For layout elements with no direct ABC+ equivalent, use the closest available directive or note as an exception.
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.4.0 | 2026-03-16 | Added MEI mapping reference |
-| 1.3.0 | 2026-03-15 | Updated MusicXML mapping reference with comprehensive bidirectional mapping |
-| 1.2.0 | 2026-01-17 | Added playback and advanced layout directives |
-| 1.1.0 | 2026-01-17 | Added chord frames and figured bass |
-| 1.0.0 | 2026-01-16 | Initial specification |
+#### 6.2.4 Percussion
+- Percussion mappings should use the `I:percmap` directive to map ABC pitches to percussion sounds.
+- For complex percussion notation, use additional `%%fx` directives to specify sound details.
 
----
+## 7. Exceptions
 
-## 13. References
+### 7.1 Elements with No Direct Equivalent
 
-- [ABC Notation Standard v2.1](https://abcnotation.com/wiki/abc:standard:v2.1)
-- [MusicXML 4.0 Specification](https://www.w3.org/2021/06/musicxml40/)
-- [MEI (Music Encoding Initiative) Specification](https://music-encoding.org/)
+| Element | Reason for Exception |
+|---------|---------------------|
+| `X: (reference number)` | Not present in MusicXML |
+| `L: (unit note length)` | Not present in MusicXML (calculated from other elements) |
+| Some advanced MusicXML layout elements | Not supported in ABC+ |
+| Some advanced MusicXML notation elements | Not supported in ABC+ |
+
+### 7.2 Elements with Partial Mapping
+
+| Element | Limitations |
+|---------|-------------|
+| `%%game_state` | Mapped to direction with type attribute, but full game state functionality may not be preserved |
+| `%%loop` | Mapped to repeat element, but advanced loop functionality may not be preserved |
+| Complex MusicXML articulations | May be simplified in ABC+ |
+
+## 8. Validation Criteria
+
+### 8.1 Successful Conversion Criteria
+
+1. **Musical Content**: All musical notes, rhythms, and expressions are preserved.
+
+2. **Structure**: The overall structure of the piece is maintained.
+
+3. **Semantics**: The musical meaning is preserved.
+
+4. **Readability**: The converted notation is readable and follows standard conventions.
+
+5. **Backward Compatibility**: The converted notation is compatible with existing software.
+
+### 8.2 Verification Process
+
+1. **Visual Inspection**: Compare the original and converted notation visually.
+
+2. **Playback Comparison**: Compare the playback of both versions.
+
+3. **Structural Comparison**: Verify that the structure is preserved.
+
+4. **Edge Case Testing**: Test with complex notations and edge cases.
+
+## 9. Conclusion
+
+This comprehensive mapping document provides a foundation for bidirectional conversion between ABC+ and MusicXML formats. While some elements may require exceptions or partial mapping, the goal is to ensure that all musical information is preserved as accurately as possible.
+
+The mapping will continue to evolve as both formats develop, and additional elements may be added in future versions of the ABC+ specification.
