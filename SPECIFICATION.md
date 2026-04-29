@@ -213,9 +213,34 @@ Applies a specific MIDI velocity (volume) to the single following note. Velocity
 
 ---
 
-## 8. Percussion Mapping
+## 8. Advanced Instrumentation
 
-### 8.1 I:percmap Directive
+### 8.1 Harp Pedals (`%%harp`)
+
+Defines the tuning for harp pedals in standard order (D, C, B, E, F, G, A).
+Use `#` for sharp, `b` for flat, and standard notes for natural.
+
+**Syntax:** `%%harp <D> <C> <B> <E> <F> <G> <A>`
+
+```abc
+%%harp D# C B E F G A
+```
+
+### 8.2 Accordion Registration (`%%accordion`)
+
+Defines accordion registers by specifying the number of reeds in high, middle, and low octave ranges.
+
+**Syntax:** `%%accordion high=N middle=N low=N`
+
+```abc
+%%accordion high=1 middle=2 low=1
+```
+
+---
+
+## 9. Percussion Mapping
+
+### 9.1 I:percmap Directive
 
 Maps ABC pitches to percussion sounds and noteheads.
 
@@ -225,23 +250,23 @@ I:percmap ^c' E5 42 x        % Hi-hat
 
 ---
 
-## 9. Lyric Extensions
+## 10. Lyric Extensions
 
-### 9.1 Analysis Abbreviations
+### 10.1 Analysis Abbreviations
 
 Lyrics starting with `^` are expanded as analysis annotations.
 
 **Example:** `w: ^CT ^P ^CT`
 
-### 9.2 Melisma Control
+### 10.2 Melisma Control
 
 Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 10. MusicXML Mapping Reference
+## 11. MusicXML Mapping Reference
 
-### 10.1 Standard ABC 2.1 Elements
+### 11.1 Standard ABC 2.1 Elements
 
 | ABC Element | MusicXML Element | Notes |
 |-------------|------------------|-------|
@@ -264,9 +289,9 @@ Use `_` for melisma or `extend` for structured lyrics.
 | Slurs (e.g., ( | `<slur type="start/stop">` | Mapped in note/notations/slur |
 | Barlines | `<barline><bar-style>` | Mapped in barline element |
 
-### 10.2 ABC+ Extension Elements
+### 11.2 ABC+ Extension Elements
 
-#### 10.2.1 Custom Directives
+#### 11.2.1 Custom Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -277,7 +302,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%loop` | `<repeat>` | Mapped to barline/repeat element |
 | `%%art` | `<articulations>` | Mapped to note/notations/articulations |
 
-#### 10.2.2 Enhanced Decorations
+#### 11.2.2 Enhanced Decorations
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -331,7 +356,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `!kick!` | `<percussion><other-percussion name="kick">` | Mapped in note/notations/technical/percussion |
 | `!crash!` | `<percussion><other-percussion name="crash">` | Mapped in note/notations/technical/percussion |
 
-#### 10.2.3 Layout & Formatting Directives
+#### 11.2.3 Layout & Formatting Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -343,7 +368,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%newline` | `<print new-system="yes">` | Mapped in print element with new-system attribute |
 | `%%measurenb` | `<measure number>` | Mapped in measure element with number attribute |
 
-#### 10.2.4 Playback Control Directives
+#### 11.2.4 Playback Control Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -352,20 +377,20 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%mute` | `<sound mute="yes"/>` | Mapped in direction/sound with mute attribute |
 | `%%mute-off` | `<sound mute="no"/>` | Mapped in direction/sound with mute attribute |
 
-#### 10.2.5 Harmony & Bass Directives
+#### 11.2.5 Harmony & Bass Directives
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
 | `%%frame` | `<harmony><frame>` | Mapped in harmony/frame element |
 | `%%fb` | `<figured-bass><figure>` | Mapped in figured-bass element |
 
-#### 10.2.6 Percussion Mapping
+#### 11.2.6 Percussion Mapping
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
 | `I:percmap` | `<score-instrument>` and `<midi-instrument>` | Mapped in part-list/score-part/score-instrument and midi-instrument |
 
-#### 10.2.7 Lyric Extensions
+#### 11.2.7 Lyric Extensions
 
 | ABC+ Element | MusicXML Element | Notes |
 |--------------|------------------|-------|
@@ -374,9 +399,9 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 11. MEI Mapping Reference
+## 12. MEI Mapping Reference
 
-### 11.1 Standard ABC 2.1 Elements
+### 12.1 Standard ABC 2.1 Elements
 
 | ABC Element | MEI Element | Notes |
 |-------------|-------------|-------|
@@ -397,9 +422,9 @@ Use `_` for melisma or `extend` for structured lyrics.
 | Slurs (e.g., ( | `<slur>` | Mapped to slur element |
 | Barlines | `<barLine>` | Mapped to barline element |
 
-### 11.2 ABC+ Extension Elements
+### 12.2 ABC+ Extension Elements
 
-#### 11.2.1 Custom Directives
+#### 12.2.1 Custom Directives
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
@@ -410,7 +435,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%loop` | `<repeat>` | Mapped to repeat element |
 | `%%art` | `<artic>` | Mapped to articulation element |
 
-#### 11.2.2 Enhanced Decorations
+#### 12.2.2 Enhanced Decorations
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
@@ -428,7 +453,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `!hammer-on(!` | `<slide type="hammerOn">` | Mapped to hammer-on slide |
 | `!pull-off(!` | `<slide type="pullOff">` | Mapped to pull-off slide |
 
-#### 11.2.3 Layout & Formatting Directives
+#### 12.2.3 Layout & Formatting Directives
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
@@ -437,21 +462,21 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%vskip` | `<space>` | Mapped to space element |
 | `%%sep` | `<divider>` | Mapped to divider element |
 
-#### 11.2.4 Playback Control Directives
+#### 12.2.4 Playback Control Directives
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
 | `%%swing` | `<tempo swing="yes">` | Mapped to tempo with swing attribute |
 | `%%mute` | `<mute>` | Mapped to mute element |
 
-#### 11.2.5 Harmony & Bass Directives
+#### 12.2.5 Harmony & Bass Directives
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
 | `%%frame` | `<chordDiagram>` | Mapped to chord diagram element |
 | `%%fb` | `<figuredBass>` | Mapped to figured bass element |
 
-#### 11.2.6 Percussion Mapping
+#### 12.2.6 Percussion Mapping
 
 | ABC+ Element | MEI Element | Notes |
 |--------------|-------------|-------|
@@ -459,7 +484,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 12. Version History
+## 13. Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -471,7 +496,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 13. References
+## 14. References
 
 - [ABC Notation Standard v2.1](https://abcnotation.com/wiki/abc:standard:v2.1)
 - [MusicXML 4.0 Specification](https://www.w3.org/2021/06/musicxml40/)

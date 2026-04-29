@@ -1,0 +1,12 @@
+X: 1
+T: Harp and Accordion Test
+C: ABC+ Test Suite
+M: 4/4
+L: 1/4
+K: C
+V: 1 name="Harp"
+%%harp D# C B E F G A
+C D E F |
+V: 2 name="Accordion"
+%%accordion high=1 middle=2 low=1
+G A B c |

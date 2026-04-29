@@ -23,8 +23,8 @@
    - Implemented: `%%vskip`, `%%sep`, `%%measurenumbering`, `%%marker`.
 8. ✅ **Priority 8: Sound & Playback (Part 1)**
    - Implemented: `%%swing`, `%%mute`, `!vel:XX!`.
-9. ⏳ **Priority 9: Advanced Inst. (Harp/Accordion)**
-   - Planned: `%%harp`, `%%accordion`.
+9. ✅ **Priority 9: Advanced Inst. (Harp/Accordion)**
+   - Implemented: `%%harp`, `%%accordion`.
 10. ⏳ **Priority 10: Advanced Layout Control**
     - Planned: `%%pagelayout`, `%%systemlayout`, `%%stafflayout`.
 11. ⏳ **Priority 11: Advanced Notation Elements**
@@ -166,12 +166,12 @@
 
  | Element | ABC+ Syntax | Status | 
  | --------- | ------------- | -------- | 
- | `<harp-pedals>` | `%%harp D# C B E F G A` | ❌ TODO | 
- | `<pedal-tuning>` | Per-pedal | ❌ TODO | 
- | `<accordion-registration>` | `%%accordion` | ❌ TODO | 
- | `<accordion-high>` | `high=N` | ❌ TODO | 
- | `<accordion-middle>` | `middle=N` | ❌ TODO | 
- | `<accordion-low>` | `low=N` | ❌ TODO | 
+ | `<harp-pedals>` | `%%harp D# C B E F G A` | ✅ DONE | 
+ | `<pedal-tuning>` | Per-pedal | ✅ DONE | 
+ | `<accordion-registration>` | `%%accordion` | ✅ DONE | 
+ | `<accordion-high>` | `high=N` | ✅ DONE | 
+ | `<accordion-middle>` | `middle=N` | ✅ DONE | 
+ | `<accordion-low>` | `low=N` | ✅ DONE | 
 
 ---
 
