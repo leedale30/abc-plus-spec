@@ -22,9 +22,19 @@
 7. ✅ **Priority 7: Layout & Formatting**
    - Implemented: `%%vskip`, `%%sep`, `%%measurenumbering`, `%%marker`.
 8. ✅ **Priority 8: Sound & Playback (Part 1)**
-   - Implemented: `%%swing`, `%%mute`.
+   - Implemented: `%%swing`, `%%mute`, `!vel:XX!`.
 9. ⏳ **Priority 9: Advanced Inst. (Harp/Accordion)**
    - Planned: `%%harp`, `%%accordion`.
+10. ⏳ **Priority 10: Advanced Layout Control**
+    - Planned: `%%pagelayout`, `%%systemlayout`, `%%stafflayout`.
+11. ⏳ **Priority 11: Advanced Notation Elements**
+    - Planned: `!ornament:...!` and `!technical:...!` syntax.
+12. ⏳ **Priority 12: Detailed MIDI & Playback**
+    - Planned: `%%mididevice`, `%%midiinstrument`, `%%midichannel`.
+13. ⏳ **Priority 13: Complex Articulations & Effects**
+    - Planned: `!articulation:...!`, `!effect:...!` extended attributes.
+14. ⏳ **Priority 14: Advanced Harmony & Chords**
+    - Planned: `%%harmony` detailed definitions.
 
 ---
 
@@ -171,7 +181,54 @@
  | --------- | ------------- | -------- | 
  | `<swing>` | `%%swing` | ✅ DONE | 
  | `<mute>` | `%%mute` | ✅ DONE | 
+ | `<velocity>` | `!vel:XX!` | ✅ DONE | 
  | `<play>` | Playback control | ❌ TODO | 
+
+---
+
+## 🎯 Priority 10: Advanced Layout Control
+
+ | Element | ABC+ Syntax | Status | 
+ | --------- | ------------- | -------- | 
+ | `<page-layout>` | `%%pagelayout` | ❌ TODO | 
+ | `<system-layout>` | `%%systemlayout` | ❌ TODO | 
+ | `<staff-layout>` | `%%stafflayout` | ❌ TODO | 
+
+---
+
+## 🎯 Priority 11: Advanced Notation Elements
+
+ | Element | ABC+ Syntax | Status | 
+ | --------- | ------------- | -------- | 
+ | `<ornaments>` (Complex) | `!ornament:...!` | ❌ TODO | 
+ | `<technical>` (Complex) | `!technical:...!` | ❌ TODO | 
+
+---
+
+## 🎯 Priority 12: Detailed MIDI & Playback
+
+ | Element | ABC+ Syntax | Status | 
+ | --------- | ------------- | -------- | 
+ | `<midi-device>` | `%%mididevice` | ❌ TODO | 
+ | `<midi-instrument>` | `%%midiinstrument` | ❌ TODO | 
+ | `<midi-bank>` | `%%midibank` | ❌ TODO | 
+
+---
+
+## 🎯 Priority 13: Complex Articulations & Effects
+
+ | Element | ABC+ Syntax | Status | 
+ | --------- | ------------- | -------- | 
+ | Articulations (w/ attrs) | `!articulation:...!` | ❌ TODO | 
+ | Effects (w/ attrs) | `!effect:...!` | ❌ TODO | 
+
+---
+
+## 🎯 Priority 14: Advanced Harmony & Chords
+
+ | Element | ABC+ Syntax | Status | 
+ | --------- | ------------- | -------- | 
+ | `<harmony>` (Detailed) | `%%harmony` | ❌ TODO | 
 
 ---
 

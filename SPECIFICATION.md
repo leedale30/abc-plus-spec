@@ -128,11 +128,38 @@ Adjusts vertical distance between systems in MusicXML tenths.
 
 Adds a horizontal separator line between systems.
 
+### 5.5 Advanced Page Layout (`%%pagelayout`)
+
+Defines precise page layout parameters, mapped directly to MusicXML `<page-layout>`. Values are given in tenths.
+
+**Syntax:** `%%pagelayout [margins="top,bottom,left,right"] [scale="X"]`
+
 ```abc
-%%sep
+%%pagelayout margins="100,100,50,50" scale="40"
+```
+
+### 5.6 Advanced System Layout (`%%systemlayout`)
+
+Defines system-specific layout adjustments, mapped to MusicXML `<system-layout>`.
+
+**Syntax:** `%%systemlayout [left-margin="X"] [right-margin="X"] [top-system-distance="X"]`
+
+```abc
+%%systemlayout left-margin="20" right-margin="20" top-system-distance="100"
+```
+
+### 5.7 Advanced Staff Layout (`%%stafflayout`)
+
+Defines distance between staves in a multi-staff system, mapped to MusicXML `<staff-layout>`.
+
+**Syntax:** `%%stafflayout [number="N"] [staff-distance="X"]`
+
+```abc
+%%stafflayout number="2" staff-distance="65"
 ```
 
 ---
+
 
 ## 6. Playback Control Directives
 
@@ -152,6 +179,16 @@ Toggles instrument muting for playback.
 ```abc
 %%mute
 %%mute-off
+```
+
+### 6.3 Note Velocity (`!vel:XX!`)
+
+Applies a specific MIDI velocity (volume) to the single following note. Velocity ranges from 1 to 127. The velocity effect is reset immediately after the note is played.
+
+**Syntax:** `!vel:XX!`
+
+```abc
+!vel:30! C !vel:90! D !vel:120! E
 ```
 
 ---
