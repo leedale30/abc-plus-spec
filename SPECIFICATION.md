@@ -191,6 +191,60 @@ Applies a specific MIDI velocity (volume) to the single following note. Velocity
 !vel:30! C !vel:90! D !vel:120! E
 ```
 
+### 6.4 MIDI Instrument Parameters (`%%midi`)
+
+Configures standard MIDI instrument parameters for playback mapping.
+
+**Syntax:** 
+`%%midi program [channel] <program_number>`
+`%%midi-bank <bank_number>`
+`%%midi-vol <volume_0-127>`
+`%%midi-pan <pan>`
+
+```abc
+%%midi program 1
+%%midi-bank 1
+%%midi-vol 100
+%%midi-pan -50
+```
+
+### 6.5 Playback Navigation
+
+Controls playback flow through structural navigation markers.
+
+**Syntax:**
+`%%segno <name>`
+`%%dalsegno <name>`
+`%%tocoda <name>`
+`%%coda <name>`
+`%%dacapo`
+`%%fine`
+
+```abc
+%%segno Segno1
+C D E F |
+%%tocoda Coda1
+G A B c |
+%%dalsegno Segno1
+%%coda Coda1
+c B A G |
+```
+
+### 6.6 Pedal Control
+
+Controls piano pedal playback behavior.
+
+**Syntax:**
+`%%damper-pedal <yes|no>`
+`%%soft-pedal <on|off>`
+`%%sostenuto-pedal <yes|no>`
+
+```abc
+%%damper-pedal yes
+C D E F |
+%%damper-pedal no
+```
+
 ---
 
 ## 7. Harmony & Bass Directives
@@ -376,6 +430,19 @@ Use `_` for melisma or `extend` for structured lyrics.
 | `%%swing-off` | `<sound swing="no"/>` | Mapped in direction/sound with swing attribute |
 | `%%mute` | `<sound mute="yes"/>` | Mapped in direction/sound with mute attribute |
 | `%%mute-off` | `<sound mute="no"/>` | Mapped in direction/sound with mute attribute |
+| `%%midi program` | `<midi-program>` | Mapped in midi-instrument element |
+| `%%midi-bank` | `<midi-bank>` | Mapped in midi-instrument element |
+| `%%midi-vol` | `<volume>` | Mapped in midi-instrument element |
+| `%%midi-pan` | `<pan>` | Mapped in midi-instrument element |
+| `%%segno` | `<sound segno="name"/>` | Mapped in direction/sound element |
+| `%%dalsegno` | `<sound dalsegno="name"/>` | Mapped in direction/sound element |
+| `%%tocoda` | `<sound tocoda="name"/>` | Mapped in direction/sound element |
+| `%%coda` | `<sound coda="name"/>` | Mapped in direction/sound element |
+| `%%dacapo` | `<sound dacapo="yes"/>` | Mapped in direction/sound element |
+| `%%fine` | `<sound fine="yes"/>` | Mapped in direction/sound element |
+| `%%damper-pedal` | `<sound damper-pedal="yes/no"/>` | Mapped in direction/sound element |
+| `%%soft-pedal` | `<sound soft-pedal="yes/no"/>` | Mapped in direction/sound element |
+| `%%sostenuto-pedal` | `<sound sostenuto-pedal="yes/no"/>` | Mapped in direction/sound element |
 
 #### 11.2.5 Harmony & Bass Directives
 
@@ -488,6 +555,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.0 | 2026-04-29 | Added MIDI Instrument Parameters, Playback Navigation, and Pedal Control |
 | 1.4.0 | 2026-03-16 | Added MEI mapping reference |
 | 1.3.0 | 2026-03-15 | Updated MusicXML mapping reference with comprehensive bidirectional mapping |
 | 1.2.0 | 2026-01-17 | Added playback and advanced layout directives |
