@@ -1,8 +1,8 @@
 # ABC+ Specification
 
-Version: 1.4.0  
+Version: 1.6.0  
 Status: Draft  
-Last Updated: 2026-03-16
+Last Updated: 2026-06-12
 
 ---
 
@@ -245,6 +245,34 @@ C D E F |
 %%damper-pedal no
 ```
 
+### 6.7 Per-Note Performance Tags (`@{...}`)
+
+Attaches playback nuance to a **single note or chord**, written immediately after the
+note (after any duration) with no space. Multiple keys are comma-separated.
+
+**Syntax:** `<note>@{key=value[,key=value]}`
+
+| Key | Range | Meaning |
+|-----|-------|---------|
+| `v` | 1–127 | MIDI velocity for this note (chords: applied to every chord note) |
+| `t` | ±2000 | Timing offset in milliseconds (negative = ahead of the beat) |
+
+```abc
+C2@{v=85} D2@{v=110,t=-12} [FAce]4@{v=60,t=18}
+```
+
+Unlike `!vel:XX!` (§6.3), a performance tag can carry several parameters at once and is
+defined to survive into MusicXML as standard per-note playback attributes:
+`v` → `dynamics` (percent-of-forte, forte = velocity 90) and `t` → `attack`
+(in divisions at the current tempo). Consumers that do not recognise the attributes
+simply ignore them; the engraving is unaffected.
+
+Tags are transparent to validation: beat-count and range checking strip `@{...}`
+before analysis, so a tagged score validates identically to an untagged one.
+Reference implementation: `abc_perf.py` in
+[abcplus-tools](https://github.com/leedale30/abcplus-tools) (modes: `check`,
+`compile`, `strip`).
+
 ---
 
 ## 7. Harmony & Bass Directives
@@ -318,9 +346,39 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 11. MusicXML Mapping Reference
+## 11. Source Conventions & Validation
 
-### 11.1 Standard ABC 2.1 Elements
+### 11.1 Measure-Block Markers (`% M<n>`)
+
+A comment line of the form `% M<n>` asserts that **the next block of voice lines begins
+measure n**. Markers are ordinary ABC comments — converters and renderers ignore them —
+but validators use them to verify voice alignment: at each marker, every voice that has
+appeared so far must have completed exactly n−1 measures. A skipped or duplicated voice
+line is therefore reported **at the measure where the drift first occurs**, instead of as
+an opaque bar-count mismatch at the end of the score.
+
+**Syntax:** a comment line containing only `% M` followed by the 1-based measure number.
+
+```abc
+% M9
+[V:1] c5 d e c | "Bbmin7" e2 d c "Ab7" B2 A G |
+[V:2] [F,A,E]2 [F,A,E]2 [F,A,E]2 [F,A,E]2 | [B,DA]2 [B,DA]2 [A,C_G]2 [A,C_G]2 |
+% M11
+[V:1] "Db7" F2 E2 D2 C B, |
+[V:2] [D,F,=B,]2 [D,F,=B,]2 [D,F,=B,]2 [D,F,=B,]2 |
+```
+
+Markers are optional; a score without them validates exactly as before. Reference
+implementation: `abc_audit.py` in
+[abcplus-tools](https://github.com/leedale30/abcplus-tools), which also validates beat
+counts per bar, bar-count consistency across voices, empty voices, and chord use in
+monophonic instruments.
+
+---
+
+## 12. MusicXML Mapping Reference
+
+### 13.1 Standard ABC 2.1 Elements
 
 | ABC Element | MusicXML Element | Notes |
 |-------------|------------------|-------|
@@ -343,7 +401,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | Slurs (e.g., ( | `<slur type="start/stop">` | Mapped in note/notations/slur |
 | Barlines | `<barline><bar-style>` | Mapped in barline element |
 
-### 11.2 ABC+ Extension Elements
+### 13.2 ABC+ Extension Elements
 
 #### 11.2.1 Custom Directives
 
@@ -466,9 +524,9 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 12. MEI Mapping Reference
+## 13. MEI Mapping Reference
 
-### 12.1 Standard ABC 2.1 Elements
+### 13.1 Standard ABC 2.1 Elements
 
 | ABC Element | MEI Element | Notes |
 |-------------|-------------|-------|
@@ -489,7 +547,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 | Slurs (e.g., ( | `<slur>` | Mapped to slur element |
 | Barlines | `<barLine>` | Mapped to barline element |
 
-### 12.2 ABC+ Extension Elements
+### 13.2 ABC+ Extension Elements
 
 #### 12.2.1 Custom Directives
 
@@ -551,10 +609,11 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 13. Version History
+## 14. Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.6.0 | 2026-06-12 | Added per-note performance tags `@{v,t}` (6.7) and Source Conventions & Validation with measure-block markers `% M<n>` (11) |
 | 1.5.0 | 2026-04-29 | Added MIDI Instrument Parameters, Playback Navigation, and Pedal Control |
 | 1.4.0 | 2026-03-16 | Added MEI mapping reference |
 | 1.3.0 | 2026-03-15 | Updated MusicXML mapping reference with comprehensive bidirectional mapping |
@@ -564,7 +623,7 @@ Use `_` for melisma or `extend` for structured lyrics.
 
 ---
 
-## 14. References
+## 15. References
 
 - [ABC Notation Standard v2.1](https://abcnotation.com/wiki/abc:standard:v2.1)
 - [MusicXML 4.0 Specification](https://www.w3.org/2021/06/musicxml40/)

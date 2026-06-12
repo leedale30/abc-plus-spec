@@ -5,6 +5,34 @@ All notable changes to the ABC+ specification will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-06-12
+
+### Added
+
+- Per-note performance tags `@{key=value,...}` (§6.7): playback nuance attached to a
+  single note or chord — `v` (MIDI velocity 1–127) and `t` (timing offset in ms),
+  mapped to MusicXML `dynamics`/`attack` note attributes. Reference implementation:
+  `abc_perf.py` in [abcplus-tools](https://github.com/leedale30/abcplus-tools).
+- Source Conventions & Validation section (§11) with measure-block markers `% M<n>`:
+  comment-level assertions of the next block's measure number, letting validators
+  report voice misalignment at the bar where it first drifts. Reference
+  implementation: `abc_audit.py` in abcplus-tools.
+
+### Fixed
+
+- Specification header version/date brought in line with the Version History table.
+
+## [1.5.0] - 2026-04-29
+
+### Added
+
+- MIDI Instrument Parameters (`%%midi`, `%%midi-bank`, `%%midi-vol`, `%%midi-pan`)
+- Playback Navigation (`%%segno`, `%%dalsegno`, `%%tocoda`, `%%coda`, `%%dacapo`, `%%fine`)
+- Pedal Control (`%%damper-pedal`, `%%soft-pedal`, `%%sostenuto-pedal`)
+
+*(Backfilled: this release was recorded in the specification's Version History but
+missing from this changelog.)*
+
 ## [1.4.0] - 2026-03-16
 
 ### Added
