@@ -378,7 +378,7 @@ monophonic instruments.
 
 ## 12. MusicXML Mapping Reference
 
-### 13.1 Standard ABC 2.1 Elements
+### 12.1 Standard ABC 2.1 Elements
 
 | ABC Element | MusicXML Element | Notes |
 |-------------|------------------|-------|
@@ -401,7 +401,7 @@ monophonic instruments.
 | Slurs (e.g., ( | `<slur type="start/stop">` | Mapped in note/notations/slur |
 | Barlines | `<barline><bar-style>` | Mapped in barline element |
 
-### 13.2 ABC+ Extension Elements
+### 12.2 ABC+ Extension Elements
 
 #### 11.2.1 Custom Directives
 
