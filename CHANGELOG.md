@@ -5,6 +5,27 @@ All notable changes to the ABC+ specification will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-06-13
+
+### Added
+
+- Pedal, Octave & Glissando line decorations (§4.3) — real, playback-capable spanners that
+  attach to the next note:
+  - `!ped!` / `!ped-up!` → `<pedal line="no" sign="yes">` (asterisk style, `Ped.` … `*`)
+  - `!ped(!` / `!ped)!` → `<pedal line="yes" sign="no">` (line/bracket style)
+  - `!ped-change!` → `<pedal type="change">` (re-pedal notch inside a line)
+  - `!8va!`/`!8va)!` (+ `!8vb!` `!15ma!` `!15mb!` `!22ma!` `!22mb!`) → `<octave-shift>`
+  - `!gliss(!` / `!gliss)!` → `<glissando>`
+  Reference implementation: abc2xml in
+  [abc-to-xml-converter](https://github.com/leedale30/abc-to-xml-converter).
+
+### Clarified
+
+- These pedal **decorations** (visible marks that also play back) are distinct from the
+  `%%damper-pedal` / `%%soft-pedal` / `%%sostenuto-pedal` **sound directives** (§6.6), which are
+  playback-only with no visible mark. Pedal/octave written as text (`"^Ped."`, `"^8va"`) is
+  cosmetic only and does not play back; `abc_audit.py` in abcplus-tools now flags it.
+
 ## [1.6.0] - 2026-06-12
 
 ### Added

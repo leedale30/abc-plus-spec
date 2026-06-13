@@ -96,6 +96,28 @@ ABC+ supports extended decoration syntax using `!decoration!` notation.
 !@above text("Custom positioned text")! C |  % Use @above or @below
 ```
 
+### 4.3 Pedal, Octave & Glissando Lines
+
+Real, **playback-capable** spanners. Attach the decoration to the next note with **no space**.
+Use these rather than text annotations (`"^Ped."`, `"^8va"`, `"^gliss."`), which render only as
+cosmetic `<words>` and do **not** play back.
+
+```abc
+!ped(!C !ped-change!E !ped)!G |   % sustain-pedal LINE with a re-pedal notch (line style)
+!ped!C  E  G  !ped-up!c |         % sustain pedal, ASTERISK style ("Ped." ... "*")
+!8va!c d e !8va)!f |              % octave line up (close with ")")
+!gliss(!C !gliss)!G |             % glissando slide
+```
+
+For continuous re-pedalling use one `!ped(!` … `!ped)!` line with `!ped-change!` at each harmony
+change; a run of bare `!ped!` signs merges into a single held pedal in most renderers.
+
+> **Pedal decoration vs. pedal directive.** The `!ped...!` decorations above are the visible,
+> score-level pedal marks that also play back (`<pedal>`). They are distinct from the global
+> *sound* directives `%%damper-pedal` / `%%soft-pedal` / `%%sostenuto-pedal` (§6.6), which set
+> `<sound damper-pedal="...">` for playback only, with no visible mark. Soft pedal (una corda)
+> has no useful playback rendering, so it is written as text (`"_una corda"` / `"_tre corde"`).
+
 ---
 
 ## 5. Layout & Formatting Directives
@@ -467,6 +489,11 @@ monophonic instruments.
 | `!snare!` | `<percussion><other-percussion name="snare">` | Mapped in note/notations/technical/percussion |
 | `!kick!` | `<percussion><other-percussion name="kick">` | Mapped in note/notations/technical/percussion |
 | `!crash!` | `<percussion><other-percussion name="crash">` | Mapped in note/notations/technical/percussion |
+| `!ped!` / `!ped-up!` | `<pedal line="no" sign="yes">` | Sustain pedal, asterisk style (`Ped.` … `*`); start/stop |
+| `!ped(!` / `!ped)!` | `<pedal line="yes" sign="no">` | Sustain pedal, line/bracket style; start/stop |
+| `!ped-change!` | `<pedal type="change" line="yes">` | Re-pedal (lift-and-recatch) notch inside a pedal line |
+| `!8va!` / `!8va)!` | `<octave-shift>` | Octave line (also `!8vb!` `!15ma!` `!15mb!` `!22ma!` `!22mb!`); close with `)` |
+| `!gliss(!` / `!gliss)!` | `<glissando>` | Glissando slide (spell `gliss`, not `glissando`) |
 
 #### 11.2.3 Layout & Formatting Directives
 
@@ -613,6 +640,7 @@ monophonic instruments.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.7.0 | 2026-06-13 | Added Pedal, Octave & Glissando line decorations (4.3): `!ped!`/`!ped-up!` (asterisk), `!ped(!`/`!ped)!` (line), `!ped-change!`, `!8va!`-family, `!gliss(!`/`!gliss)!` → real `<pedal>`/`<octave-shift>`/`<glissando>`. Distinguished from the `%%damper-pedal` sound directive (6.6) |
 | 1.6.0 | 2026-06-12 | Added per-note performance tags `@{v,t}` (6.7) and Source Conventions & Validation with measure-block markers `% M<n>` (11) |
 | 1.5.0 | 2026-04-29 | Added MIDI Instrument Parameters, Playback Navigation, and Pedal Control |
 | 1.4.0 | 2026-03-16 | Added MEI mapping reference |
